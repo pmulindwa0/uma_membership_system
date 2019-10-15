@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.ico">
+    <title>UMA Membership Application Form</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Wizard CSS -->
+    <link href="plugins/bower_components/register-steps/steps.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <style>
+        .entry:not(:first-of-type) {
+            margin-top: 10px;
+        }
+
+        .glyphicon {
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <section id="wrapper" class="step-register">
+        <div class="register-box">
+            <div class="">
+                <a href="javascript:void(0)" class="text-center db m-b-40"><img src="plugins/images/admin-icon.png"
+                        alt="Home" /><br />
+                    {{!-- <img src="../plugins/images/admin-text-dark.png" alt="Home" /> --}}
+                    <h2><strong>UMA Membership Application Form</strong></h2>
+                </a>
+                <!-- multistep form -->
+                <form id="msform" style="max-width: 1000px" method="POST" action="/application" enctype="multipart/form-data" >
+                    <!-- progressbar -->
+                    <ul id="eliteregister">
+                        <li class="active">Section I</li>
+                        <li>Section II</li>
+                        <li>Section III</li>
+                        <li>Section IV</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">Company Contact Details</h2>
+                        {{!-- <h3 class="fs-subtitle">This is step 1</h3> --}}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="company" name="company"
+                                        placeholder="Company Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="office" name="office"
+                                        placeholder="Head Office - Physical Address"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="box" id="box" placeholder="P.O. Box">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="tel_no" name="tel_no"
+                                        placeholder="Telephone No."> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="E-mail Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="whatsapp" name="whatsapp"
+                                        placeholder="Whatsapp Number"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="web" name="web" placeholder="Website">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="facebook" name="facebook"
+                                        placeholder="Facebook Account"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="tweeter" name="tweeter"
+                                        placeholder="Tweeter Handle">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="skype" name="skype" placeholder="Skype">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="fax" name="fax"
+                                        placeholder="Fax number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="selling_point" id="selling-point"
+                                        placeholder="Unique Selling Point">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Social Profiles</h2>
+                        <h3 class="fs-subtitle">Your presence on the social network</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="business" name="business"
+                                        placeholder="Nature of Business">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" class="form-control" id="establishment" name="establishment"
+                                        placeholder="Business establishment Date"> 
+                                    <small id="passwordHelpBlock" class="form-text text-muted">
+                                        Business establishment Date
+                                    </small>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="custom-select form-control" id="ownership" name="ownership">
+                                        <option value="">Type of Ownership</option>
+                                        <option value="Limited Company, Private/Public">Limited Company, Private/Public
+                                        </option>
+                                        <option value="Partnership">Partnership</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="custom-select form-control" id="investment" name="investment">
+                                        <option value="">Capital Investment: (Plant & Machinery)</option>
+                                        <option value="Below 100 million">Below 100 million</option>
+                                        <option value="101 - 200 million">101 - 200 million</option>
+                                        <option value="201 - 300 million">201 - 300 million</option>
+                                        <option value="301 - 400 million">301 - 400 million</option>
+                                        <option value="401 - 500 million">401 - 500 million</option>
+                                        <option value="Above 501 million">501 million and above</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="custom-select form-control" id="turnover" name="turnover">
+                                        <option value="">Annual Turnover</option>
+                                        <option value="Below 100 million">Below 100 million</option>
+                                        <option value="101 - 200 million">101 - 200 million</option>
+                                        <option value="201 - 300 million">201 - 300 million</option>
+                                        <option value="301 - 400 million">301 - 400 million</option>
+                                        <option value="401 - 500 million">401 - 500 million</option>
+                                        <option value="Above 501 million">501 million and above</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="custom-select form-control" id="employees" name="employees">
+                                        <option value="">Labour Force</option>
+                                        <option value="Below 100 employees">Below 100 employees</option>
+                                        <option value="101 - 200 employees">101 - 200 employees</option>
+                                        <option value="201 - 300 employees">201 - 300 employees</option>
+                                        <option value="301 - 400 employees">301 - 400 employees</option>
+                                        <option value="401 - 500 employees">401 - 500 employees</option>
+                                        <option value="Above 501 employees">501 employees and above</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="msformlabel"><strong>Primary products you produce & their brand names</strong> Press + button to add more</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="myRepeatingFields">
+                                <div class="entry input-group">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="pdt_name" name="fields"
+                                                placeholder="Product Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="HScode" name="fields2"
+                                                placeholder="H.S Code"> </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="brand_name" name="fields3"
+                                                placeholder="Brand Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 right">
+                                        <div class="form-group">
+                                            <span>
+                                                <button type="button" class="btn btn-success btn-lg btn-add">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="msformlabel"><strong>Full names & Nationality of company Directors/Partner at the date of application</strong> Press + button to add more</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="directorRepeatingFields">
+                                <div class="entry input-group">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="directors_name" name="directors_name"
+                                                placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="directors_nationality" name="directors_nationality"
+                                                placeholder="Nationality"> </div>
+                                    </div>
+                            
+                                    <div class="col-md-2 left">
+                                        <div class="form-group">
+                                            <span>
+                                                <button type="button" class="btn btn-success btn-lg btn-add-director">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Contact People</h2>
+                        <h3 class="fs-subtitle">Names and Contacts of the Managers</h3>
+                        <div class="form-row">
+                            <label for="md" class="col-sm-2 col-form-label">Managing Director</label>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control" id="md" placeholder="Full name" name="md_name">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" name="md_email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="tel" class="form-control" name="md_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="fm" class="col-sm-2 col-form-label">Finance Manager</label>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control" id="fm" placeholder="Full name" name="fm_name">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" name="fm_email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="tel" class="form-control" name="fm_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="pm" class="col-sm-2 col-form-label">Production Manager</label>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control" id="pm" placeholder="Full name" name="pm_name">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" name="pm_email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="tel" class="form-control" name="pm_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="em" class="col-sm-2 col-form-label">Export Manager</label>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control" id="em" placeholder="Full name" name="em_name">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" name="em_email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="tel" class="form-control" name="em_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="am" class="col-sm-2 col-form-label">Administration Manager</label>
+                            <div class="form-group col-sm-4">
+                                <input type="text" class="form-control" id="am" placeholder="Full name" name="am_name">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="email" class="form-control" name="am_email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <input type="tel" class="form-control" name="am_phone" placeholder="Phone">
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Documents To Attach</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group custom-file col-md-12">
+                                <label class="custom-file-label" for="license">License (s) held</label>
+                                <input type="file" class="custom-file-input" id="license" name="license">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group custom-file col-md-12">
+                                <label class="custom-file-label" for="ura">URA TIN registration certificate</label>
+                                <input type="file" class="custom-file-input" id="ura" name="ura">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group custom-file col-md-12">
+                                <label class="custom-file-label" for="nssf">NSSF clearance certificate</label>
+                                <input type="file" class="custom-file-input" id="nssf" name="nssf">
+                            </div>
+                        </div>
+                        <input type="button" name="previous" class="previous action-button" value="Previous" />
+                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                    </fieldset>
+                </form>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </section>
+    <!-- jQuery -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <script src="plugins/bower_components/register-steps/jquery.easing.min.js"></script>
+    <script src="plugins/bower_components/register-steps/register-init.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!--Style Switcher -->
+    <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="js/repeater.js"></script>
+</body>
+
+</html>

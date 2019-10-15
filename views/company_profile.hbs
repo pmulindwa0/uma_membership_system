@@ -1,0 +1,235 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-xs-12">
+        <div class="white-box">
+            <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/uma.jpg">
+                <div class="overlay-box">
+                    <div class="user-content">
+                        <a href="{{member.website}}"><h4 class="text-white">Visit Website</h4></a>
+                        <h5 class="text-white">{{member.website}}</h5> </div>
+                </div>
+            </div>
+            <div class="user-btm-box">
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p class="text-purple"><i class="ti-facebook"></i></p>
+                    <h6>{{member.facebook_account}}</h6> </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p class="text-blue"><i class="ti-twitter"></i></p>
+                    <h6>{{member.tweeter_handle}}</h6> </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <p class="text-danger"><i class="ti-skype"></i></p>
+                    <h6>{{member.skype}}</h6> </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-xs-12">
+        <div class="white-box">
+            <ul class="nav nav-tabs tabs customtab">
+                <li class="tab active">
+                    <a href="#profile" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profile</span> </a>
+                </li>
+                <li class="tab">
+                    <a href="#new" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Contact People</span> </a>
+                </li>
+                <li class="tab">
+                    <a href="#messages" data-toggle="tab" aria-expanded="true"> <span class="visible-xs"><i class="fas fa-envelope"></i></span> <span class="hidden-xs">Attachments</span> </a>
+                </li>
+                <li class="tab">
+                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Update Profile</span> </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6 b-r"> <strong>Box Number</strong>
+                            <br>
+                            <p class="text-muted">{{member.box_number}}</p>
+                        </div>
+                        <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
+                            <br>
+                            <p class="text-muted">{{member.telephone_number}}</p>
+                        </div>
+                        <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
+                            <br>
+                            <p class="text-muted">{{member.email}}</p>
+                        </div>
+                        <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                            <br>
+                            <p class="text-muted">{{member.physical_address}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4 class="font-bold m-t-30">Key Selling Point</h4>
+                    <p class="m-t-30">{{member.selling_point}}</p>
+                    <hr>
+                    <h5><strong>Fax number:</strong> {{member.fax_number}}</h5>
+                    <h5><strong>Establishment Date:</strong> {{member.establishment_date}}</h5>
+                    
+                </div>
+                <div class="tab-pane" id="new">
+                    <table id="demo-foo-accordion" class="table m-b-0 toggle-arrow-tiny" data-paging="true" data-paging-size="7">
+                        <thead>
+                            <tr>
+                                <th data-hide="phone"> Job Title </th>
+                                <th data-toggle="true"> Full Name </th>
+                                <th data-hide="all"> Email </th>
+                                <th data-hide="all"> Phone Contacts </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Managing Director</th>
+                                <td>{{member.md_name}}</td>
+                                <td>{{member.md_email}}</td>
+                                <td>{{member.md_phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Finance Manager</th>
+                                <td>{{member.fm_name}}</td>
+                                <td>{{member.fm_email}}</td>
+                                <td>{{member.fm_phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Production Manager</th>
+                                <td>{{member.pm_name}}</td>
+                                <td>{{member.pm_email}}</td>
+                                <td>{{member.pm_phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Export Manager</th>
+                                <td>{{member.em_name}}</td>
+                                <td>{{member.em_email}}</td>
+                                <td>{{member.em_phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Adminstration</th>
+                                <td>{{member.am_name}}</td>
+                                <td>{{member.am_email}}</td>
+                                <td>{{member.am_phone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="messages">
+                    <div class="steamline">
+                        <div class="sl-item">
+                            <div class="sl-left"> </div>
+                            <div class="sl-right">
+                                <div class="m-l-40"> <a href="#" class="text-info">Documents</a> <span class="sl-date">for offical use only</span>
+                                    <div class="m-t-20 row">  
+                                        <div class="col-md-9 col-xs-12">
+                                            <ul class="common-list">
+                                                <li><a href="{{member.license}}"><i class="fa fa-check text-success"></i> License (s) held</a></li>
+                                                <li><a href="{{member.ura}}"><i class="fa fa-check text-success"></i> URA TIN registration certificate</a></li>
+                                                <li><a href="{{member.nssf}}"><i class="fa fa-check text-success"></i> NSSF clearance certificate</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="tab-pane" id="settings">
+                    <form class="form-horizontal form-material">
+                        <div class="form-group">
+                            <label class="col-md-12">Phone No.</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line" name="phone" value="{{member.telephone_number}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email" class="col-md-12">Email</label>
+                            <div class="col-md-12">
+                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="email" id="example-email" value="{{member.email}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Website</label>
+                            <div class="col-md-12">
+                                <input type="text" value="{{member.website}}" class="form-control form-control-line" name="web"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Fax No</label>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line" value="{{member.fax_number}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Paid Up</label>
+                            <div class="col-md-12">
+                                <label class="radio-inline">
+                                    <input type="radio" name="paid" id="paid_yes" value="Yes" {{ternary member.paid_up "checked" ""}}> Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="paid" id="paid_no" value="No" {{ternary member.paid_up "" "checked"}}> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Active</label>
+                            <div class="col-md-12">
+                                <label class="radio-inline">
+                                    <input type="radio" name="active" id="active_yes" value="Yes" {{ternary member.isActive "checked" ""}}> Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="active" id="active_no" value="No" {{ternary member.isActive "" "checked"}}> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12">Labour Force</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-control-line" name="employees">
+                                    <option value="">Select Option</option>
+                                    <option value="Below 100 employees" {{#if_eq member.labour_force "Below 100 employees"}}selected{{/if_eq}}>Below 100 employees</option>
+                                    <option value="101 - 200 employees" {{#if_eq member.labour_force "101 - 200 employees"}}selected{{/if_eq}}>101 - 200 employees</option>
+                                    <option value="201 - 300 employees" {{#if_eq member.labour_force "201 - 300 employees"}}selected{{/if_eq}}>201 - 300 employees</option>
+                                    <option value="301 - 400 employees" {{#if_eq member.labour_force "301 - 400 employees"}}selected{{/if_eq}}>301 - 400 employees</option>
+                                    <option value="401 - 500 employees" {{#if_eq member.labour_force "401 - 500 employees"}}selected{{/if_eq}}>401 - 500 employees</option>
+                                    <option value="Above 501 employees" {{#if_eq member.labour_force "Above 501 employees"}}selected{{/if_eq}}>501 employees and above</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-12">Annual Turnover</label>
+                            <div class="col-sm-12">
+                                <select class="form-control form-control-line" name="turnover">
+                                    <option value="">Select Option</option>
+                                    <option value="Below 100 million" {{#if_eq member.turn_over "Below 100 million"}}selected{{/if_eq}}>Below 100 million</option>
+                                    <option value="101 - 200 million" {{#if_eq member.turn_over "101 - 200 million"}}selected{{/if_eq}}>101 - 200 million</option>
+                                    <option value="201 - 300 million" {{#if_eq member.turn_over "201 - 300 million"}}selected{{/if_eq}}>201 - 300 million</option>
+                                    <option value="301 - 400 million" {{#if_eq member.turn_over "301 - 400 million"}}selected{{/if_eq}}>301 - 400 million</option>
+                                    <option value="401 - 500 million" {{#if_eq member.turn_over "401 - 500 million"}}selected{{/if_eq}}>401 - 500 million</option>
+                                    <option value="Above 501 million" {{#if_eq member.turn_over "Above 501 million"}}selected{{/if_eq}}>501 million and above</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Facebook Account</label>
+                            <div class="col-md-12">
+                                <input type="text" value="{{member.facebook_account}}" class="form-control form-control-line" name="facebook"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Tweeter Handle</label>
+                            <div class="col-md-12">
+                                <input type="text" value="{{member.tweeter_handle}}" class="form-control form-control-line" name="tweeter"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12">Skype</label>
+                            <div class="col-md-12">
+                                <input type="text" value="{{member.skype}}" class="form-control form-control-line" name="skype"> </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success">Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

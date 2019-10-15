@@ -1,0 +1,133 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4>
+    </div>
+</div>
+
+<form action="/wsaip/data" method="post">
+    <div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="m-b-0 box-title">Create Filter</h3>
+            {{!-- <p class="text-muted"> Use a <code>select multiple</code> as your input element.</p> --}} 
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>By Company location</label>
+                    <select class="form-control select2" multiple data-style="form-control" name="district">
+                        {{# each district }}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label>By Company Sector</label>
+                    <select class="form-control select2" multiple name="sectors">
+                        <option>Select</option>
+                        {{# each sectors }}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label>Query Builder</label>
+                    <select class="form-control select2" multiple name="query">
+                        <optgroup label="Firm Info">
+                            <option value="doYouExportProducts">Export Products</option>
+                            <option value="doYouHaveAnEnvironmentalManagementSystemInPlace">Have an Environmental Mgt System</option>
+                            <option value="subscribeToAnyInternationalEnvironmentalStandard">Subscribe to International Standard</option>
+                            <option value="customersRequireInternationalCertification">Customers Require International Certification</option>
+                        </optgroup>
+                        <optgroup label="Water Supply & Consumption">
+                            <option value="useWaterInProduction">Use Water in production process</option>
+                            <option value="haveWaterAbstractionPermit">Have a water abstraction permit</option>
+                            <option value="experienceWaterShortage">Experience water shortage</option>
+                            <option value="chemicalsForWaterPretreatment">Use Chemicals for water pretreatment</option>
+                        </optgroup>
+                        <optgroup label="Storm Water Mgt">
+                            <option value="industryInSwampySurrounding">Industry in low-laying environment</option>
+                            <option value="affectedByFlooding">Affected by flooding</option>
+                            <option value="industrialAreaPaved">Industrial Area paved</option>
+                            <option value="harvestRainWater">Have drainage System</option>
+                        </optgroup>
+                        <optgroup label="Waste Water Mgt">
+                            <option value="generateWasteWaterFromProduction">Generate waste water</option>
+                            <option value="collectionSystemForWasteWater">Have a collection system for waste water</option>
+                            <option value="dischargeEffluentToEnvironment">Discharge effluents to Environment</option>
+                            <option value="treatmentDischargePermit">Have a waste water treatment & Discharge permit</option>
+                            <option value="wasteWaterMonitoringLabOnSite">Have a wastewater monitoring Lab</option>
+                            <option value="wasteWaterTreatmentInternalStandards">Have Internally set standards</option>
+                            <option value="wasteWaterTreatmentTrainedStaff">Have trained Staff for wastewater treatment</option>
+                            <option value="recoverproductFromWasteWater">Recover Products From wastewater treatment</option>
+                            <option value="treatWasteWaterForReuse">Treat wastewater for reuse</option>
+                            <option value="trainingOnWasteManagement">Need training on wastewater M'gt</option>
+                        </optgroup>
+                        <optgroup label="Feacal Management">
+                            <option value="toiletOnPremises">Have toilet on premises</option>
+                            <option value="connectedToSewerLine">Connected to sewer line</option>
+                        </optgroup>
+                        <optgroup label="Solid Waste Management">
+                            <option value="generateSolidWaste">Generate Solid waste</option>
+                            <option value="segregateWaste">Segregate waste</option>
+                            <option value="recycleWaste">Recycle Waste</option>
+                            <option value="recoverProductsFromSolidWaste">Recover products from solid waste</option>
+                        </optgroup>
+                    </select>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>By Number of Employees</label>
+                    <select class="form-control select2" multiple data-style="form-control" name="employees">
+                        <option value="1 to 10">1 to 10</option>
+                        <option value="11 to 20">11 to 20</option>
+                        <option value="21 to 50">21 to 50</option>
+                        <option value="51 to 100">51 to 100</option>
+                        <option value="101 to 200">101 to 200</option>
+                        <option value="201 to 400">201 to 400</option>
+                        <option value="401 to 600">401 to 600</option>
+                        <option value="601 to 800">601 to 800</option>
+                        <option value="801 to 1,000">801 to 1,000</option>
+                        <option value="More than 1,000">More than 1,000</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label>By Turnover</label>
+                    <select class="form-control select2" multiple name="turnover">
+                        <option>Select</option>
+                        {{# each turnover }}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label>Daily Water Usage</label>
+                    <select class="form-control select2" multiple data-style="form-control" name="water_usage">
+                        <option value="">Select Option</option>
+                        <option value="0-50">0 - 50</option>
+                        <option value="51-100">51 - 100</option>
+                        <option value="101-200">101 - 200</option>
+                        <option value="201-300">201 - 300</option>
+                        <option value="301-400">301 - 400</option>
+                        <option value="401-500">401 - 500</option>
+                        <option value=">500"> > 500</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <div class="button-box m-t-20">
+                        <button type="submit" class="btn btn-info btn-outline">Search</button>
+                        {{!-- <a id="select-all" class="btn btn-danger btn-outline" href="#">select all</a> <a id="deselect-all" class="btn btn-info btn-outline" href="#">deselect all</a> <a id="refresh" class="btn btn-warning btn-outline" href="#">refresh</a>  --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+{{> report}}
+<span id='local-variable' style="display:none">{{wsaipData}}</span>
+
+{{!-- <script>
+   const obj = {{wsaipData}};
+   console.log(obj);
+</script> --}}

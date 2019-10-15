@@ -1,0 +1,125 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="white-box printableArea">
+            <div class="">
+                <h2 class="m-b-0 m-t-0">{{ job.title }}</h2> <small class="text-muted db">Every detail matters</small>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="white-box text-center"> 
+                            {{!-- <img src="{{ job.sample3 }}" class="img-responsive" />  --}}
+                            <h3 class="box-title">Samples</h3>
+                            <!-- START carousel-->
+                            <div id="carousel-example-captions" data-ride="carousel" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+                                </ol>
+                                <div role="listbox" class="carousel-inner">
+                                    <div class="item active"> <img src="{{ job.sample }}" alt="First slide image">
+                                    </div>
+                                    <div class="item"> <img src="{{ job.sample2 }}" alt="Second slide image">
+                                    
+                                    </div>
+                                    <div class="item"> <img src="{{ job.sample3 }}" alt="Third slide image">
+                                        
+                                    </div>
+                                </div>
+                                <a href="#carousel-example-captions" role="button" data-slide="prev" class="left carousel-control"> <span aria-hidden="true" class="fa fa-angle-left"></span> <span class="sr-only">Previous</span> </a>
+                                <a href="#carousel-example-captions" role="button" data-slide="next" class="right carousel-control"> <span aria-hidden="true" class="fa fa-angle-right"></span> <span class="sr-only">Next</span> </a>
+                            </div>
+                            <!-- END carousel-->
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-6">
+                        <h4 class="box-title m-t-40">Job Order Description</h4>
+                        <p>{{ job.description }}</p>
+                        <h2 class="m-t-40">Quantity Ordered: <small class="text-success">({{ job.quantity }})</small></h2>
+                        {{!-- <button class="btn btn-inverse btn-rounded m-r-5" data-toggle="tooltip" title="Edit Job details"><i class="ti-pencil-alt"></i> </button> --}}
+                        <h3 class="box-title m-t-40">Key Highlights</h3>
+                        <ul class="list-icons">
+                            <li>Placed On: <small class="text-success">{{ job.orderDate }}</small></li>
+                            <li>Placed By: <small class="text-success">Peter</small></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Progress Info</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td width="390">Cutting</td>
+                                        <td> {{ job.cutting }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stitching</td>
+                                        <td> {{ job.stitching }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Finishing</td>
+                                        <td> {{ job.finishing }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Packaging</td>
+                                        <td> {{ job.packaging }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-right">
+            <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#responsive-modal"> Update Progress </button>
+            <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+        </div>
+        <!-- modal -->
+        <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Update Progress</h4> </div>
+                    <form method="POST" action="/job-order/{{ job.id }}">
+                        <div class="modal-body">
+                            <input type="hidden" name="title" value="{{job.title}}">
+                            <input type="hidden" name="sample" value="{{ job.sample }}">
+                            <input type="hidden" name="quantity" value="{{ job.quantity }}">
+                            <input type="hidden" name="orderDate" value="{{ job.orderDate }}">
+                            <input type="hidden" name="description" value="{{ job.description }}">
+                            <div class="form-group">
+                                <label for="cutting" class="control-label">Cutting:</label>
+                                <input type="number" class="form-control" id="cutting" name="cutting" value="{{job.cutting}}"> 
+                            </div>
+                            <div class="form-group">
+                                <label for="stitching" class="control-label">Stitching:</label>
+                                <input type="number" class="form-control" id="stitching" name="stitching" value="{{job.stitching}}"> 
+                            </div> 
+                            <div class="form-group">
+                                <label for="finishing" class="control-label">Finishing:</label>
+                                <input type="number" class="form-control" id="finishing" name="finishing" value="{{job.finishing}}"> 
+                            </div> 
+                            <div class="form-group">
+                                <label for="packaging" class="control-label">Packaging:</label>
+                                <input type="number" class="form-control" id="packaging" name="packaging" value="{{job.packaging}}"> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{!-- </MODEL> --}}
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="white-box">
+            <div class="card-body">
+                <h4 class="card-title">System user list</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list" data-paging="true" data-paging-size="7">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{# each users }}
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)"><img src="plugins/images/users/default/profile-photo.png" alt="user" width="40" class="img-circle" /> {{name}}</a>
+                                </td>
+                                <td>{{email}}</td>
+                                <td><span class="label label-default">
+                                    {{ role }}
+                                    </span> </td>
+                                <td><a href="javascript:void(0)" class="waves-effect delete-user" data-id="{{id}}"><i class="mdi mdi-delete fa-fw"></i></a></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

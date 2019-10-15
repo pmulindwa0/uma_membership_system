@@ -1,0 +1,100 @@
+ <!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- .row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <form action="/stock-take" class="form-horizontal" method="POST">
+                <div class="form-body">
+                    <h3 class="box-title">Record New stock</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <!--/row-->
+                    <div class="row">
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Material</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" name="materialId">
+                                        {{# each materials }}
+                                        <option value="{{ id }}">{{ title }}</option>
+                                        {{/each}}
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Quantity</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" name="quantity"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Cost</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" name="ammount"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Recieved Stock </h3>
+            <div class="table-responsive">
+                <table id="myTable" class="display nowrap table table-hover table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Quantity</th>
+                            <th>Unit(s)</th>
+                            <th>Costs</th>
+                            <th>Reciept date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{# each stocks }}
+                        <tr> 
+                            <td>{{ material.title }}</td>
+                            <td>{{ quantity }}</td>
+                            <td>{{ material.units }}</td>
+                            <td>{{ ammount }}</td>
+                            <td>{{ dateIn }}</td>    
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

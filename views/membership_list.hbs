@@ -1,0 +1,73 @@
+ <!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<!-- /.row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            {{!-- <h3 class="box-title m-b-0">Membership List</h3> --}}
+            <h4 class="card-title">Membership list</h4>
+            <h6 class="card-subtitle"></h6>
+            <a href="membership/upload" type="button" class="btn btn-rounded btn-default btn-outline m-t-10 float-right" >Add New Contact</a>
+            <h6 class="card-subtitle"></h6>
+            <div class="table-responsive">
+                <table id="myTable" class="display table table-hover table-striped" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Telephone</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Box Address</th>
+                            <th>Fax Number</th>
+                            <th>Whatsapp Number</th>
+                            <th>Actions</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fixed-table-body">
+            
+                        {{# each members}}
+                        <tr>
+                            <td>{{ company_name }}</td>
+                            <td>{{ telephone_number }}</td>
+                            <td>{{ email }}</td>
+                            <td>{{ physical_address }}</td>
+                            <td>{{ box_number }}</td>
+                            <td>{{ fax_number }}</td>
+                            <td>{{ whatsapp_number }}</td>
+                            <td>
+                                <div class="btn-group dropdown m-r-10">
+                                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default btn-outline dropdown-toggle waves-effect waves-light" type="button">Action<span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInY" style="float:left;">
+                                        <li><a href="membership/{{_id}}">Profile</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="membership/{{_id}}/delete">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                {{#if isActive}}
+                                <span class="label label-table label-success">Active</span>
+                                {{else}}
+                                <span class="label label-table label-danger">Inactive</span>
+                                {{/if}}
+
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    <br>
+                    <br>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

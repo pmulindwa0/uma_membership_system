@@ -1,0 +1,368 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="white-box printableArea">
+            <div class="">
+                <h2 class="m-b-0 m-t-0">Company Response</h2> <small class="text-muted db">Collected by {{data.dataCollector}} on {{formatDate data.dateOfCollection day="numeric" month="long" year="numeric"}}</small>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h4 class="box-title m-t-5">Firm Information</h4>
+                        <div class="tab-pane active" id="profile">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-6 b-r"> <strong>Name</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.member.company_name}}</p>
+                                </div>
+                                <div class="col-md-2 col-xs-6 b-r"> <strong>Interviewee</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.interviewee}}</p>
+                                </div>
+                                <div class="col-md-2 col-xs-6 b-r"> <strong>Contact Number</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.member.telephone_number}}</p>
+                                </div>
+                                <div class="col-md-2 col-xs-6 b-r"> <strong>Physical Address</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.member.physical_address}}</p>
+                                </div>
+                                <div class="col-md-2 col-xs-6 b-r"> <strong>Postal Address</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.member.box_number}}</p>
+                                </div>
+                                <div class="col-md-2 col-xs-6"> <strong>Sector</strong>
+                                    <br>
+                                    <p class="text-muted">{{data.member.sector}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5><strong>Type of Neigbourhood: </strong>{{data.neighborHood}}</h5>
+                                    <h5><strong>Company Categorization: </strong>{{data.member.category}}</h5>
+                                    <h5><strong>Annual Turnover: </strong><small class="text-success">({{data.member.turnover}})</small></h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5><strong>Estimated Number of permanent Employees:</strong><small class="text-success"> ({{data.estimatedNumberOfPermanentEmployees}})</small></h5>
+                                    <h5><strong>Estimated Number of permanent Employees:</strong><small class="text-success"> ({{data.estimatedNumberOfTemporaryEmployees}})</small></h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5><strong>Approximate size of land occupied: </strong><small class="text-success"> {{data.landOccupiedByFirm}} acre(s)</small></h5>
+                                    <h5><strong>Export products: </strong><small class="text-success">{{data.doYouExportProducts}}</small></h5>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {{!-- <h2 class="m-t-40">$153 <small class="text-success">(36% off)</small></h2>
+                        <button class="btn btn-inverse btn-rounded m-r-5" data-toggle="tooltip" title="Add to cart"><i class="ti-shopping-cart"></i> </button>
+                        <button class="btn btn-danger btn-rounded"> Buy Now </button>
+                        <h3 class="box-title m-t-40">Key Highlights</h3>
+                        <ul class="list-icons">
+                            <li><i class="fa fa-check text-success"></i> Sturdy structure</li>
+                            <li><i class="fa fa-check text-success"></i> Designed to foster easy portability</li>
+                            <li><i class="fa fa-check text-success"></i> Perfect furniture to flaunt your wonderful collectibles</li>
+                        </ul> --}}
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Water Supply & Consumption</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Do you use water in your process of production?</th>
+                                        <td> {{data.useWaterInProduction}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Source of water</th>
+                                        <td> {{data.waterSource}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have a water abstraction permit</th>
+                                        <td> {{data.haveWaterAbstractionPermit}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Quantity of water used daily</th>
+                                        <td> {{data.waterQuantity}} Cubic Meters</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Does your water source/supply meet your demands</th>
+                                        <td> {{data.waterSupplyMeetDemand}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you experience water shortage sometimes</th>
+                                        <td> {{data.experienceWaterShortage}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>How often do you experience water shortage</th>
+                                        <td> {{data.howOftenExperienceWaterShortage}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Does the raw water quality supplied meet your production standards</th>
+                                        <td> {{data.waterQualityMeetProductionStandards}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>How do you deal with improving the quality</th>
+                                        <td> {{data.howImproveWaterQuality}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you use chemicals for water pre-treatment</th>
+                                        <td> {{data.chemicalsForWaterPretreatment}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cost of Treatment</th>
+                                        <td> {{data.costOfTreament}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Does the cost of operating the pre-treament systems hinder you from carrying out required treatment process</th>
+                                        <td> {{data.costHinderPretreatment}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What is the major costline of your water pre-treatent</th>
+                                        <td> {{data.waterPretreatmentMajorCostLine}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What could your water supplier do to improve your water quality</th>
+                                        <td> {{data.adviceToWaterSupplierForQualityImprovement}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Storm Water Management</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Is your industry in low-lying area or swampy surrounding?</th>
+                                        <td> {{data.industryInSwampySurrounding}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What is the frequency of flooding or inundation in your industry or area?</th>
+                                        <td> {{data.floodingFrequencyInIndustry}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What months of the year have more flooding?</th>
+                                        <td> {{data.monthsWithMoreFlooding}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Are you affected by the flooding</th>
+                                        <td> {{data.affectedByFlooding}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How are you affected by flooding</th>
+                                        <td> {{data.howAffectedByFlooding}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How have you dealt with the flooding problem</th>
+                                        <td> {{data.dealtWithFlooding}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Is the entire industrial area paved or made of concrete</th>
+                                        <td> {{data.industrialAreaPaved}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have drainage systems</th>
+                                        <td> {{data.haveDrainageSystems}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you harvest rain water in your industry</th>
+                                        <td> {{data.harvestRainWater}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What is your harvesting capacity</th>
+                                        <td> {{data.rainWaterHarvestingCapacity}} Cubic Meter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Waste Water Management</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Do you generate wastewater from your process of production</th>
+                                        <td> {{data.generateWasteWaterFromProduction}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Average amount of wastewater generated per day</th>
+                                        <td> {{data.wasteWaterAmountGenerated}} Cubic Meters</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have a collection system for wastewater</th>
+                                        <td> {{data.collectionSystemForWasteWater}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Wastewater treatment process employed</th>
+                                        <td> {{wasteWaterTreatmentProcess}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Is the treatment process functional to meet your desired treatment outcome</th>
+                                        <td> {{data.treatmentProcessMeetDesiredOutcomes}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you discharge the effluents to the environment</th>
+                                        <td> {{data.dischargeEffluentToEnvironment}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have a waste treatment & discharge permit</th>
+                                        <td> {{data.treatmentDischargePermit}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Where do you discharge your effluents</th>
+                                        <td> {{data.effluent_discharge_area}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have a functional wastewater monitoring laboratory on site</th>
+                                        <td> {{data.wasteWaterMonitoringLabOnSite}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>How often do you do laboratory monitoring of your wastewater tratment process & final effluents</th>
+                                        <td> {{data.labMonitoringOfWasteWaterTreatment}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have internally set standards of wastewater treatment</th>
+                                        <td> {{data.wasteWaterTreatmentInternalStandards}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>How would you rate your internal set standards with government standards</th>
+                                        <td> {{data.internalVsGovStandards}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you have staff trained for wastewater treatment</th>
+                                        <td> {{data.wasteWaterTreatmentTrainedStaff}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you recover any products from waste water treatment</th>
+                                        <td> {{data.recoverproductFromWasteWater}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Products recovered from waste water</th>
+                                        <td> {{data.productsFromWasteWater}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Treat waste water for any level of reuse in the industry</th>
+                                        <td> {{data.treatWasteWaterForReuse}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Would you want any training on waste water managemnet</th>
+                                        <td> {{data.trainingOnWasteManagement}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Feacal Management</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Do you have a toilet/latrine on your premises?</th>
+                                        <td> {{data.toiletOnPremises}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What type of toilet/latrine (feacal containment) do you use</th>
+                                        <td> {{data.typeOfToilet}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Are you connected to any sewer line</th>
+                                        <td> {{data.connectedToSewerLine}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>If yes, is it a separate or combined sewer</th>
+                                        <td> {{data.separateOrCombinedSewer}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>If not connected to a sewer line, how do you empty your toilet</th>
+                                        <td> {{data.howEmptyToilet}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How often do you empty the toilet</th>
+                                        <td> {{data.howOftenEmptyToilet}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Where do you discharge the feacal sludge from the toilet</th>
+                                        <td> {{data.whereDischargeFeacalSludge}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Costs of discharging the sludge</th>
+                                        <td> {{data.costOfSludgeDischarge}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3 class="box-title m-t-40">Solid Waste Management</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Do you generate solid waste from your process of production?</th>
+                                        <td> {{data.generateSolidWaste}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>What type of solid waste do you generate</th>
+                                        <td> {{data.typeOfSolidWasteGenerated}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Average amount of solid waste generated daily</th>
+                                        <td> {{data.amountOfSolidWasteGenerated}} Kgs</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How do you dispose-off the generated solid waste</th>
+                                        <td> {{data.howDisposeSolidWaste}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How often do you dispose-off solid waste</th>
+                                        <td> {{data.howOftenDisposeSolidWaste}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you segregrate your waste</th>
+                                        <td> {{data.segregateWaste}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you recycle waste</th>
+                                        <td> {{data.recycleWaste}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Do you recycle any products from solid waste</th>
+                                        <td> {{data.recoverProductsFromSolidWaste}} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Products recovered from solid waste</th>
+                                        <td> {{data.productsRecoveredFromSolidWaste}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h4 class="box-title m-t-40">General Comment</h4>
+                        <p>{{ data.generalComments }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-right m-b-40">
+            <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">Company on map</h3>
+            <div id="map_1" class="gmaps"></div>
+        </div>
+    </div>
+</div>

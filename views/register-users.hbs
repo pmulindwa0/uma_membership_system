@@ -1,0 +1,136 @@
+ <!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- .row -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <form action="/users" class="form-horizontal" method="POST" data-toggle="validator">
+                <div class="form-body">
+                    <h3 class="box-title">Registration Form</h3>
+                    <hr class="m-t-0 m-b-40">
+                    <!--/row-->
+                    <div class="row">
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 text-left">Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="name"> </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 text-left">Email</label>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" data-error="Invalid email address" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-left">Password</label>
+                                {{!-- <div class="col-md-9">
+                                    <input type="password" class="form-control" name="password"> </div> --}}
+                                <div class="col-sm-5">
+                                    <input type="password" name="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+                                    <span class="help-block">Minimum of 6 characters</span> 
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-left">User type</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="role">
+                                        <option value="">Select Option</option>
+                                        {{#if_eq user.role "Membership Admin" }}
+                                        <option value="Membership Admin">Membership Admin</option>
+                                        {{/if_eq}}
+                                        
+                                        {{#if_eq user.role "Wsaip Admin" }}
+                                        <option value="Wsaip Admin">Wsaip Admin</option>
+                                        {{/if_eq}}
+                                        <option value="Standard user">Standard user</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Is Admin?</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline">
+                                    <input type="radio" name="isAdmin" id="isAdmin_yes" value="true"> Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isAdmin" id="isAdmin_no" value="false" checked> No
+                                </label>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+{{!-- <div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Recieved Stock </h3>
+            <div class="table-responsive">
+                <table id="myTable" class="display nowrap table table-hover table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Quantity</th>
+                            <th>Unit(s)</th>
+                            <th>Costs</th>
+                            <th>Reciept date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{# each stocks }}
+                        <tr> 
+                            <td>{{ material.title }}</td>
+                            <td>{{ quantity }}</td>
+                            <td>{{ material.units }}</td>
+                            <td>{{ ammount }}</td>
+                            <td>{{ dateIn }}</td>    
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> --}}

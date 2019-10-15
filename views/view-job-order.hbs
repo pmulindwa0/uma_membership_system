@@ -1,0 +1,63 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+</div>
+<!-- ============================================================== -->
+<!-- material table -->
+<!-- ============================================================== -->
+<!--.row-->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Export Job Orders</h3>
+            <p class="text-muted m-b-30">Export data to Copy, Excel, PDF & Print</p>
+            <div class="table-responsive">
+                <table id="example23" class="display nowrap table table-hover table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Qty Ordered</th>
+                            <th>Order Date</th>
+                            <th>Cutting</th>
+                            <th>Stitching</th>
+                            <th>Finishing</th>
+                            <th>Packaging</th>
+                            <th>Manage</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Title</th>
+                            <th>Qty Ordered</th>
+                            <th width="100">Order Date</th>
+                            <th>Cutting</th>
+                            <th>Stitching</th>
+                            <th>Finishing</th>
+                            <th>Packaging</th>
+                            <th>Manage</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {{# each jobs }}
+                        <tr>
+                            <td>{{ title }}</td>
+                            <td>{{ quantity }}</td>
+                            <td><small>{{formatRelative orderDate }}</small></td>
+                            <td>{{ cutting }}</td>
+                            <td>{{ stitching }}</td>
+                            <td>{{ finishing }}</td>
+                            <td>{{ packaging }}</td>
+                            <td>
+                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-1 delete-job" data-id="{{id}}"><i class="ti-trash"></i></button>
+                                <a href="/job-order/{{ id }}" class="btn btn-info btn-outline btn-circle btn-lg m-r-1"><i class="ti-eye"></i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<!--./row-->

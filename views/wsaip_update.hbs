@@ -1,0 +1,963 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="white-box">
+            <div class="card-body wizard-content ">
+                <h4 class="card-title">Update Response</h4>  
+                <form action="/wsaip/questionnaire" class="tab-wizard vertical wizard-circle" id="wsaip_data_collection" method="POST">
+                    <!-- Step 1 -->
+                    <h6>Firm Information</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firm">Firm/Industry Name:</label>
+                                    <input type="text" class="form-control" id="firm" name="firm">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="operation_level">Level of Operation of Firm</label>
+                                    <select class="custom-select form-control" id="operation_level" name="operation_level">
+                                        <option value="">Select Option</option>
+                                        <option value="Branch">Branch</option>
+                                        <option value="Main">Main</option>
+                                        <option value="Subsidiary">Subsidiary</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="interviewee">Interviewee Person(s)</label>
+                                    <input type="text" class="form-control" id="interviewee" name="interviewee"> 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="interviewee_role">Role in Firm/Position(s)</label>
+                                    <input type="text" class="form-control" id="interviewee_role" name="interviewee_role"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="neighborhood">NeighborHood</label>
+                                    <select class="custom-select form-control" id="neighborhood" name="neighborhood">
+                                        <option value="">Select Option</option>
+                                        <option value="Urban">Urban</option>
+                                        <option value="Peri-Urban">Peri-Urban</option>
+                                        <option value="Rural">Rural</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="raw_materials">Key Raw Materials Used</label>
+                                    <input type="text" class="form-control" id="raw_materials" name="raw_materials">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="production_units">Units of Monthly Production</label>
+                                    <select class="custom-select form-control" id="production_units" name="production_units">
+                                        <option value="">Select Option</option>
+                                        <option value="Kgs">Kgs</option>
+                                        <option value="Tonnes">Tonnes</option>
+                                        <option value="Liters">Liters</option>
+                                        <option value="Cubic Meters">Cubic Meters</option>
+                                        <option value="Items/Units">Items/Units</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="volume_of_production">Volume of Production Per Month</label>
+                                    <select class="custom-select form-control" id="volume_of_production" name="volume_of_production">
+                                        <option value="">Select Option</option>
+                                        <option value="0-50">0-50</option>
+                                        <option value="51-100">51-100</option>
+                                        <option value="101-200">101-200</option>
+                                        <option value="201-300">201-300</option>
+                                        <option value="301-400">301-400</option>
+                                        <option value="401-500">401-500</option>
+                                        <option value="500-750">500-750</option>
+                                        <option value="751-1,000">751-1,000</option>
+                                        <option value="1,001 - 3,000">1,001 - 3,000</option>
+                                        <option value="3,001 - 6,000">3,001 - 6,000</option>
+                                        <option value="6,001 -10,000">6,001 -10,000</option>
+                                        <option value="10,001 - 30,000">10,001 - 30,000</option>
+                                        <option value="30,001 - 50,000">30,001 - 50,000</option>
+                                        <option value="50,001 - 75,000">50,001 - 75,000</option>
+                                        <option value="75,001 - 100,000">75,001 - 100,000</option>
+                                        <option value="100,001 - 250,000">100,001 - 250,000</option>
+                                        <option value="250,000 - 500,000">250,000 - 500,000</option>
+                                        <option value="500,000 - 750,000">500,000 - 750,000</option>
+                                        <option value="750,001 - 1,000,000">750,001 - 1,000,000</option>
+                                        <option value=">1,000,000">>1,000,000</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="permanent_employees">Estimated Number of Permanent Employees</label>
+                                    <select class="custom-select form-control" id="permanent_employees" name="permanent_employees">
+                                        <option value="">Select Option</option>
+                                        <option value="1 to 10">1 to 10</option>
+                                        <option value="11 to 20">11 to 20</option>
+                                        <option value="21 to 50">21 to 50</option>
+                                        <option value="51 to 100">51 to 100</option>
+                                        <option value="101 to 200">101 to 200</option>
+                                        <option value="201 to 400">201 to 400</option>
+                                        <option value="401 to 600">401 to 600</option>
+                                        <option value="601 to 800">601 to 800</option>
+                                        <option value="801 to 1,000">801 to 1,000</option>
+                                        <option value="More than 1,000">More than 1,000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="temporary_employees">Estimated Number of Temporary Employees</label>
+                                    <select class="custom-select form-control" id="temporary_employees" name="temporary_employees">
+                                        <option value="">Select Option</option>
+                                        <option value="1 to 10">1 to 10</option>
+                                        <option value="11 to 20">11 to 20</option>
+                                        <option value="21 to 50">21 to 50</option>
+                                        <option value="51 to 100">51 to 100</option>
+                                        <option value="101 to 200">101 to 200</option>
+                                        <option value="201 to 400">201 to 400</option>
+                                        <option value="401 to 600">401 to 600</option>
+                                        <option value="601 to 800">601 to 800</option>
+                                        <option value="801 to 1,000">801 to 1,000</option>
+                                        <option value="More than 1,000">More than 1,000</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you Export Products?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="export_products" id="export_products_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="export_products" id="export_products_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ugandan_market">Percentage of Market that is Ugandan?</label>
+                                    <input type="number" name="ugandan_market" id="ugandan_market" class="form-control">  
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="regional_market">Percentage of Market that is Regional (E.Africa)?</label>
+                                    <input type="number" name="regional_market" id="regional_market" class="form-control">  
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="international_market">Percentage of Market that is International?</label>
+                                    <input type="number" name="international_market" id="international_market" class="form-control">  
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have an environmental management system in place?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="environmental_management_system_used">Please Name the Environmental Management System being used</label>
+                                    <input type="text" name="environmental_management_system_used" id="environmental_management_system_used" class="form-control">  
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you subscribe to any international environmental standard e.g ISO, NOSA etc?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="standards_subscription" id="standards_subscription_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="standards_subscription" id="standards_subscription_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="international_standards">If Yes, what Standard(s) do you Subscribe to?</label>
+                                    <input type="text" name="international_standards" id="international_standards" class="form-control">  
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do your Customers Require International Certification?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="international_certification" id="international_certification_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="international_certification" id="international_certification_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="land_size">Can you Approximate the size on land in acres occupied by your operations?</label>
+                                    <input type="number" name="land_size" id="land_size" class="form-control">  
+                                </div>
+                            </div>    
+                        </div>
+                    </section>
+                    <!-- Step 2 -->
+                    <h6>Water Supply & Consumption</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="use_water_yes">Do you use water in your process of Production?</label>
+                                    <label class="radio-inline">
+                                    <input type="radio" name="use_water" id="use_water_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                    <input type="radio" name="use_water" id="use_water_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nwsc">Source of water: </label>
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" id="nwsc" value="NWSC" name="water_source"> NWSC
+                                    </label>
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" id="ground_water" value="Ground Water" name="water_source"> Ground Water
+                                    </label>
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" id="rain-water" value="Rain Water" name="water_source"> Rain Water
+                                    </label>
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" id="lake_water" value="Lake water" name="water_source"> Lake water
+                                    </label>
+                                    <label class="checkbox-inline">
+                                    <input type="checkbox" id="borehole" value="Boreholes" name="water_source"> Boreholes
+                                    </label>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="qty_of_water">Quantity of Water Used Daily (Cubic Meters)</label>
+                                    <select class="custom-select form-control" id="qty_of_water" name="qty_of_water">
+                                        <option value="">Select Option</option>
+                                        <option value="0 - 50">0 - 50</option>
+                                        <option value="51 - 100">51 - 100</option>
+                                        <option value="101 - 200">101 - 200</option>
+                                        <option value="201 - 300">201 - 300</option>
+                                        <option value="301 - 400">301 - 400</option>
+                                        <option value="401 - 500">401 - 500</option>
+                                        <option value="> 500"> > 500</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="meet_demand_yes">Does your water source/supply meet your demand?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="meet_demand" id="meet_demand_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="meet_demand" id="meet_demand_no" value="No"> No
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="meet_demand" id="meet_demand_partly" value="Partly"> Partly
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="water_shortage_yes">Do you experience water shortage sometimes?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="water_shortage" id="water_shortage_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="water_shortage" id="water_shortage_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>If yes, How often do you experience water shortage</label>
+                                     <input type="text" name="water_shortage_times" id="water_shortage_times" class="form-control">
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="water_quality_yes">Does the raw water quality supplied meet your production standards?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="water_quality" id="water_quality_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="water_quality" id="water_quality_no" value="No"> No
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="water_quality" id="water_quality_partly" value="Partly"> Partly
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="improving_quality">If no, How do you deal with improving the quality?</label>
+                                    <select class="selectpicker" multiple data-style="form-control" id="improving_quality" name="improving_quality">
+                                        <option>Sedimentation</option>
+                                        <option>Screening</option>
+                                        <option>Flocculation</option>
+                                        <option>Ultra-filtration (UF)</option>
+                                        <option>Activated Charcoal adsorption</option>
+                                        <option>Sand filtration</option>
+                                        <option>Dissolved Air filtration</option>
+                                        <option>De-chlorination</option>
+                                        <option>Anthracite treament</option>
+                                        <option>PH correction</option>
+                                        <option>Alkalinity correction</option>
+                                        <option>Disinfection</option>
+                                        <option>Any other form of treament</option>
+                                    </select>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="chemicals_for_treatment_yes">Do you use chemicals for water pre-treatment?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="treatment_cost">Cost of Treatment</label>
+                                    <input type="text" name="treatment_cost" id="treatment_cost" class="form-control">
+                                    
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cost_of_operating_yes">Does the cost of operating these pre-treatment systems prohibitive for your operations?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="major_treatment_costs">What is the major cost line of your water pre-treatment?</label>
+                                    <select class="selectpicker" multiple data-style="form-control" id="major_treatment_costs" name="major_treatment_costs">
+                                        <option>Chemicals</option>
+                                        <option>Electricity</option>
+                                        <option>Maintenance of machinery</option>
+                                        <option>Operation salaries</option>
+                                        <option>Capital investment</option>
+                                    </select>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have a water abstraction permit?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="advice_improve_water_quality">What could your water supplier do to improve water quality</label>
+                                    <textarea name="advice_improve_water_quality" id="advice_improve_water_quality" rows="3" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Step 3 -->
+                    <h6>Storm Water Management</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Is your industry in a low-lying area or swampy surrounding?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="freq_of_flooding">Frequency of flooding or inundation in your area</label>
+                                    <input type="text" class="form-control" id="freq_of_flooding" name="freq_of_flooding">
+                                </div>
+                            </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="flooding_months">What months of the year have more flooding?</label>
+                                    <select class="selectpicker" multiple data-style="form-control" id="flooding_months" name="flooding_months">
+                                        <option>Jan</option>
+                                        <option>Feb</option>
+                                        <option>Mar</option>
+                                        <option>Apr</option>
+                                        <option>May</option>
+                                        <option>Jun</option>
+                                        <option>Jul</option>
+                                        <option>Aug</option>
+                                        <option>Sep</option>
+                                        <option>Oct</option>
+                                        <option>Nov</option>
+                                        <option>Dec</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Are you affected by flooding?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="how_affected_by_flooding">If Yes, How are you affected by flooding?</label>
+                                    <input type="text" class="form-control" id="how_affected_by_flooding" name="how_affected_by_flooding">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dealt_with_flooding">How have you dealt with the flooding problem?</label>
+                                    <input type="text" class="form-control" id="dealt_with_flooding" name="dealt_with_flooding">
+                                </div>
+                            </div> 
+                         </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Is the entire industrial area paved or made of concrete?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="area_paved" id="area_paved_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="area_paved" id="area_paved_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have drainage systems like gutters, etc to convey storm water?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="drainage_system" id="drainage_system_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="drainage_system" id="drainage_system_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                         </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Do you harvest rain water in your industry?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>If Yes, what is your harvesting capacity in cubic meters?</label>
+                                    <select class="custom-select form-control" id="harvest_capacity" name="harvest_capacity">
+                                        <option value="">Select Option</option>
+                                        <option value="0-5">0-5</option>
+                                        <option value="5 to 10">5 to 10</option>
+                                        <option value="10 to 20">10 to 20</option>
+                                        <option value="20 to 50">20 to 50</option>
+                                        <option value="50 to 100">50 to 100</option>
+                                        <option value="100 to 200">100 to 200</option>
+                                        <option value="200 to 500">200 to 500</option>
+                                        <option value="More than 500">More than 500</option>
+                                    </select>
+                                </div>
+                            </div> 
+                         </div>
+                    </section>
+
+                    <h6>Waste Water Management</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you generate wastewater from your process of production?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Average amount of wastewater generated in cubic meters per day</label>
+                                    <select class="custom-select form-control" id="amount_of_wastewater" name="amount_of_wastewater">
+                                        <option value="">Select Option</option>
+                                        <option value="0 - 50">0 - 50</option>
+                                        <option value="51 - 100">51 - 100</option>
+                                        <option value="101 - 200">101 - 200</option>
+                                        <option value="201 - 300">201 - 300</option>
+                                        <option value="301 - 400">301 - 400</option>
+                                        <option value="401 - 500">401 - 500</option>
+                                        <option value="> 500"> > 500</option>
+                                    </select>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have a collection system for wastewater?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="wastewater_treatment_process">What kind of wastewater treament process do you employ?</label>
+                                    <input type="text" class="form-control" id="wastewater_treatment_process" name="wastewater_treatment_process">
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Is the treatment process functional to meet your desired outcomes?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you discharge the effluent to the environment?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="effluents_to_environment" id="effluents_to_environment_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="effluents_to_environment" id="ieffluents_to_environment_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                         </div>   
+                         <div class="row">
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have a wastewater treatment and discharge permit?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="effluent_discharge_area">Where do you discharge your effluent?</label>
+                                    <input type="text" class="form-control" id="effluent_discharge_area" name="effluent_discharge_area">
+                                    <span class="help-block"><small>E.g Drainage channel, Sewer line, Nearby swamp, wetland, stream, own pit</small></span>
+                                </div>
+                            </div>
+                         </div> 
+                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have a functional wastewater monitoring laboratory on site?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="often_monitor_laboratory">How often do you do laboratory monitoring of your wastewater treatment process and final effluent?</label>
+                                    <select class="custom-select form-control" id="often_monitor_laboratory" name="often_monitor_laboratory">
+                                        <option value="">Select type</option>
+                                        <option value="More than once a Day">More than once a Day</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Once a Week">Once a Week</option>
+                                        <option value="More than once a Week">More than once a Week</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                        <option value="Twice a Year">Twice a Year</option>
+                                        <option value="Annually">Annually</option>
+                                        <option value="After Two Years">After Two Years</option>
+                                        <option value="Not All">Not All</option>
+                                    </select>
+                                </div>
+                            </div> 
+                        </div>  
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have internally set standards of wastewater treatment?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="internal_vs_gov_standard">How would you rate your internally set standards with government standards?</label>
+                                    <select class="custom-select form-control" id="internal_vs_gov_standard" name="internal_vs_gov_standard">
+                                        <option value="">Select type</option>
+                                        <option value="Higher than Gov">Higher than Gov</option>
+                                        <option value="Equal to Gov">Equal to Gov</option>
+                                        <option value="Lower than Gov">Lower than Gov</option>
+                                     </select>
+                                </div>
+                            </div> 
+                        </div>  
+                        <div class="row">
+                          <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have staff trained for wastewater treatment?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="trained_staff" id="trained_staff" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="trained_staff" id="trained_staff" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Would you want any training on waste/ wastewater management?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="training_on_waste" id="training_on_waste_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="training_on_waste" id="training_on_waste_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                        </div>     
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you recover any products from waste water treatment?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="product_name_from_wastewater">Please Name the Products Recovered from WasteWater?</label>
+                                    <input type="text" class="form-control" id="product_name_from_wastewater" name="product_name_from_wastewater">
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Do you treat your wastewater for any level of reuse in the industry?</label><br>
+                                <label class="radio-inline">
+                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_yes" value="Yes"> Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_no" value="No"> No
+                                </label>
+                            </div>
+                        </div>           
+                    </section>
+                    <h6>Feacal Sludge Management</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you have a toilet/latrine on your premises?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="have_latrine" id="have_latrine_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="have_latrine" id="have_latrine_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="type_of_latrine">What type of latrine/tiolet (feacal containment) do you use?</label>
+                                    <select class="custom-select form-control" id="type_of_latrine" name="type_of_latrine">
+                                        <option value="">Select type</option>
+                                        <option value="Lined Pit Latrine">Lined Pit Latrine</option>
+                                        <option value="Septic Tank">Septic Tank</option>
+                                        <option value="Ventilated Improved Pit Latrine">Ventilated Improved Pit Latrine (VIP)</option>
+                                        <option value="Sewer Line">Sewer Line</option>
+                                    </select>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Are you connected to any sewer line?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>If yes, is it a separate or combined sewer?</label> <br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="separate_or_combined_sewer" value="Yes"> NWSC Main line
+                                    </label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="separate_or_combined_sewer" value="No"> Industrial Line that connects to Lagoon
+                                    </label>
+                                </div>
+                            </div>     
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>If not connected to a sewer line, how do you empty your toilet?</label>
+                                    <input type="text" name="how_empty_toilet" class="form-control">
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>How often do you empty the toilet?</label>
+                                    <input type="text" name="often_empty_toilet" class="form-control">
+                                </div>
+                            </div>      
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Where do you discharge the feacal sludge from the toilet?</label>
+                                    <input type="text" name="where_discharge_sludge" class="form-control">
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>How much does it cost you to discharge the sludge?</label>
+                                    <input type="text" name="cost_discharge_sludge" class="form-control">
+                                </div>
+                            </div> 
+                        </div>
+                    </section>
+                    <h6>Solid Waste Management</h6>
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you generate solid waste from your processs of production?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="type_of_solid_waste">What type of solid waste do you generate?</label>
+                                    <select class="custom-select form-control" id="type_of_solid_waste" name="type_of_solid_waste">
+                                        <option value="">Select type</option>
+                                        <option value="Organic">Organic</option>
+                                        <option value="Bio-Degradable">Bio-Degradable</option>
+                                        <option value="Glass">Glass</option>
+                                        <option value="Metallic">Metallic</option>
+                                        <option value="Chemical">Chemical</option>
+                                        <option value="Medical Waste">Medical Waste</option>
+                                        <option value="Plastic">Plastic</option>
+                                    </select>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="solid_waste_generated">What is your average amount of solid waste generated in Kgs per day?</label>
+                                    <select class="custom-select form-control" id="solid_waste_generated" name="solid_waste_generated">
+                                        <option value="">Select range</option>
+                                        <option value="0 - 50">0 - 50</option>
+                                        <option value="51 - 100">51 - 100</option>
+                                        <option value="101 - 200">101 - 200</option>
+                                        <option value="201 - 300">201 - 300</option>
+                                        <option value="301 - 400">301 - 400</option>
+                                        <option value="401 - 500">401 - 500</option>
+                                        <option value="> 500"> > 500</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>How do you dispose-off the generated solid waste?</label>
+                                    <input type="text" name="how_dispose_solid_waste" class="form-control">
+                                    <span class="help-block"><small>E.g (Landfill, Solid waste companies pick it, burn it, dig a pit, reuse it, give it out to farmers for fertizers, )</small></span>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="often_dispose_solid_waste">How often do you dispose-off the solid waste?</label>
+                                    <select class="custom-select form-control" id="often_dispose_solid_waste" name="often_dispose_solid_waste">
+                                        <option value="">Select range</option>
+                                        <option value="More than once a Day">More than once a Day</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Once a Week">Once a Week</option>
+                                        <option value="More than once a Week">More than once a Week</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                        <option value="Twice a Year">Twice a Year</option>
+                                        <option value="Annually">Annually</option>
+                                        <option value="After Two Years">After Two Years</option>
+                                        <option value="Not All">Not All</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you Segregrate your Waste</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="segregate_waste" id="segregate_waste_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="segregate_waste" id="segregate_waste_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you Recyle Waste</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="recycle_waste" id="recycle_waste_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="recycle_waste" id="recycle_waste_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Do you recover any products from solid waste?</label><br>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_yes" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_no" value="No"> No
+                                    </label>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>If yes, Please Name the Products Recovered from Solid Waste?</label>
+                                    <input type="text" name="products_recovered" class="form-control"> 
+                                </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="general_comment">Any Comment/Solution regarding Water, Waste and Environment?</label>
+                                    <textarea name="general_comment" id="general_comment" rows="3" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
