@@ -54,6 +54,7 @@
                                 <div class="col-md-4">
                                     <h5><strong>Approximate size of land occupied: </strong><small class="text-success"> {{data.landOccupiedByFirm}} acre(s)</small></h5>
                                     <h5><strong>Export products: </strong><small class="text-success">{{data.doYouExportProducts}}</small></h5>
+                                    <h5><strong>Products/Services: </strong><small class="text-success">[{{data.member.products}}]</small></h5>
                                 </div>
                             </div>
                             
@@ -355,6 +356,8 @@
         <hr>
         <div class="text-right m-b-40">
             <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+            <a href="wsaip/update/{{data._id}}" class="btn btn-info btn-outline" type="button"> <span><i class="fa fa-edit"></i> Edit</span> </a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-outline delete-wsaip" data-id="{{data._id}}"> <span><i class="fa fa-trash"></i> Delete</span> </a>
         </div>
     </div>
 </div>

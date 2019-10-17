@@ -9,7 +9,7 @@
         <div class="white-box">
             <div class="card-body wizard-content ">
                 <h4 class="card-title">Update Response</h4>  
-                <form action="/wsaip/questionnaire" class="tab-wizard vertical wizard-circle" id="wsaip_data_collection" method="POST">
+                <form action="/wsaip/update/{{wsaipInfo._id}}" class="tab-wizard vertical wizard-circle" id="wsaip_data_collection" method="POST">
                     <!-- Step 1 -->
                     <h6>Firm Information</h6>
                     <section>
@@ -17,7 +17,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firm">Firm/Industry Name:</label>
-                                    <input type="text" class="form-control" id="firm" name="firm">
+                                    <input type="text" class="form-control" id="firm" name="firm" value="{{wsaipInfo.member.company_name}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -25,9 +25,9 @@
                                     <label for="operation_level">Level of Operation of Firm</label>
                                     <select class="custom-select form-control" id="operation_level" name="operation_level">
                                         <option value="">Select Option</option>
-                                        <option value="Branch">Branch</option>
-                                        <option value="Main">Main</option>
-                                        <option value="Subsidiary">Subsidiary</option>
+                                        <option value="Branch" {{#if_eq wsaipInfo.firmLevelofOperation "Branch"}}selected{{/if_eq}}>Branch</option>
+                                        <option value="Main" {{#if_eq wsaipInfo.firmLevelofOperation "Main"}}selected{{/if_eq}}>Main</option>
+                                        <option value="Subsidiary" {{#if_eq wsaipInfo.firmLevelofOperation "Subsidiary"}}selected{{/if_eq}}>Subsidiary</option>
                                     </select>
                                 </div>
                             </div>
@@ -36,13 +36,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="interviewee">Interviewee Person(s)</label>
-                                    <input type="text" class="form-control" id="interviewee" name="interviewee"> 
+                                    <input type="text" class="form-control" id="interviewee" name="interviewee" value="{{wsaipInfo.interviewee}}"> 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="interviewee_role">Role in Firm/Position(s)</label>
-                                    <input type="text" class="form-control" id="interviewee_role" name="interviewee_role"> 
+                                    <input type="text" class="form-control" id="interviewee_role" name="interviewee_role" value="{{wsaipInfo.intervieweeRoleInFirm}}"> 
                                 </div>
                             </div>
                         </div>
@@ -52,16 +52,16 @@
                                     <label for="neighborhood">NeighborHood</label>
                                     <select class="custom-select form-control" id="neighborhood" name="neighborhood">
                                         <option value="">Select Option</option>
-                                        <option value="Urban">Urban</option>
-                                        <option value="Peri-Urban">Peri-Urban</option>
-                                        <option value="Rural">Rural</option>
+                                        <option value="Urban" {{#if_eq wsaipInfo.neighborHood "Urban"}}selected{{/if_eq}}>Urban</option>
+                                        <option value="Peri-Urban" {{#if_eq wsaipInfo.neighborHood "Peri-Urban"}}selected{{/if_eq}}>Peri-Urban</option>
+                                        <option value="Rural" {{#if_eq wsaipInfo.neighborHood "Rural"}}selected{{/if_eq}}>Rural</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="raw_materials">Key Raw Materials Used</label>
-                                    <input type="text" class="form-control" id="raw_materials" name="raw_materials">
+                                    <input type="text" class="form-control" id="raw_materials" name="raw_materials" value="{{wsaipInfo.rawMaterialsUsed}}">
                                 </div>
                             </div>
                             
@@ -72,11 +72,11 @@
                                     <label for="production_units">Units of Monthly Production</label>
                                     <select class="custom-select form-control" id="production_units" name="production_units">
                                         <option value="">Select Option</option>
-                                        <option value="Kgs">Kgs</option>
-                                        <option value="Tonnes">Tonnes</option>
-                                        <option value="Liters">Liters</option>
-                                        <option value="Cubic Meters">Cubic Meters</option>
-                                        <option value="Items/Units">Items/Units</option>
+                                        <option value="Kgs" {{#if_eq wsaipInfo.unitsOfMonthlyProduction "Kgs"}}selected{{/if_eq}}>Kgs</option>
+                                        <option value="Tonnes" {{#if_eq wsaipInfo.unitsOfMonthlyProduction "Tonnes"}}selected{{/if_eq}}>Tonnes</option>
+                                        <option value="Liters" {{#if_eq wsaipInfo.unitsOfMonthlyProduction "Liters"}}selected{{/if_eq}}>Liters</option>
+                                        <option value="Cubic Meters" {{#if_eq wsaipInfo.unitsOfMonthlyProduction "Cubic Meters"}}selected{{/if_eq}}>Cubic Meters</option>
+                                        <option value="Items/Units" {{#if_eq wsaipInfo.unitsOfMonthlyProduction "Items/Units"}}selected{{/if_eq}}>Items/Units</option>
                                     </select>
                                 </div>
                             </div>
@@ -85,26 +85,26 @@
                                     <label for="volume_of_production">Volume of Production Per Month</label>
                                     <select class="custom-select form-control" id="volume_of_production" name="volume_of_production">
                                         <option value="">Select Option</option>
-                                        <option value="0-50">0-50</option>
-                                        <option value="51-100">51-100</option>
-                                        <option value="101-200">101-200</option>
-                                        <option value="201-300">201-300</option>
-                                        <option value="301-400">301-400</option>
-                                        <option value="401-500">401-500</option>
-                                        <option value="500-750">500-750</option>
-                                        <option value="751-1,000">751-1,000</option>
-                                        <option value="1,001 - 3,000">1,001 - 3,000</option>
-                                        <option value="3,001 - 6,000">3,001 - 6,000</option>
-                                        <option value="6,001 -10,000">6,001 -10,000</option>
-                                        <option value="10,001 - 30,000">10,001 - 30,000</option>
-                                        <option value="30,001 - 50,000">30,001 - 50,000</option>
-                                        <option value="50,001 - 75,000">50,001 - 75,000</option>
-                                        <option value="75,001 - 100,000">75,001 - 100,000</option>
-                                        <option value="100,001 - 250,000">100,001 - 250,000</option>
-                                        <option value="250,000 - 500,000">250,000 - 500,000</option>
-                                        <option value="500,000 - 750,000">500,000 - 750,000</option>
-                                        <option value="750,001 - 1,000,000">750,001 - 1,000,000</option>
-                                        <option value=">1,000,000">>1,000,000</option>
+                                        <option value="0-50" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "0-50"}}selected{{/if_eq}}>0-50</option>
+                                        <option value="51-100" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "51-100"}}selected{{/if_eq}}>51-100</option>
+                                        <option value="101-200" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "101-200"}}selected{{/if_eq}}>101-200</option>
+                                        <option value="201-300" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "201-300"}}selected{{/if_eq}}>201-300</option>
+                                        <option value="301-400" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "301-400"}}selected{{/if_eq}}>301-400</option>
+                                        <option value="401-500" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "401-500"}}selected{{/if_eq}}>401-500</option>
+                                        <option value="500-750" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "500-750"}}selected{{/if_eq}}>500-750</option>
+                                        <option value="751-1,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "751-1,000"}}selected{{/if_eq}}>751-1,000</option>
+                                        <option value="1,001 - 3,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "1,001 - 3,000"}}selected{{/if_eq}}>1,001 - 3,000</option>
+                                        <option value="3,001 - 6,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "3,001 - 6,000"}}selected{{/if_eq}}>3,001 - 6,000</option>
+                                        <option value="6,001 -10,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "6,001 -10,000"}}selected{{/if_eq}}>6,001 -10,000</option>
+                                        <option value="10,001 - 30,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "10,001 - 30,000"}}selected{{/if_eq}}>10,001 - 30,000</option>
+                                        <option value="30,001 - 50,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "30,001 - 50,000"}}selected{{/if_eq}}>30,001 - 50,000</option>
+                                        <option value="50,001 - 75,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "50,001 - 75,000"}}selected{{/if_eq}}>50,001 - 75,000</option>
+                                        <option value="75,001 - 100,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "75,001 - 100,000"}}selected{{/if_eq}}>75,001 - 100,000</option>
+                                        <option value="100,001 - 250,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "100,001 - 250,000"}}selected{{/if_eq}}>100,001 - 250,000</option>
+                                        <option value="250,000 - 500,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "250,000 - 500,000"}}selected{{/if_eq}}>250,000 - 500,000</option>
+                                        <option value="500,000 - 750,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "500,000 - 750,000"}}selected{{/if_eq}}>500,000 - 750,000</option>
+                                        <option value="750,001 - 1,000,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth "750,001 - 1,000,000"}}selected{{/if_eq}}>750,001 - 1,000,000</option>
+                                        <option value=">1,000,000" {{#if_eq wsaipInfo.volumeOfProductionPerMonth ">1,000,000"}}selected{{/if_eq}}>>1,000,000</option>
                                     </select>
                                 </div>
                             </div>
@@ -115,16 +115,16 @@
                                     <label for="permanent_employees">Estimated Number of Permanent Employees</label>
                                     <select class="custom-select form-control" id="permanent_employees" name="permanent_employees">
                                         <option value="">Select Option</option>
-                                        <option value="1 to 10">1 to 10</option>
-                                        <option value="11 to 20">11 to 20</option>
-                                        <option value="21 to 50">21 to 50</option>
-                                        <option value="51 to 100">51 to 100</option>
-                                        <option value="101 to 200">101 to 200</option>
-                                        <option value="201 to 400">201 to 400</option>
-                                        <option value="401 to 600">401 to 600</option>
-                                        <option value="601 to 800">601 to 800</option>
-                                        <option value="801 to 1,000">801 to 1,000</option>
-                                        <option value="More than 1,000">More than 1,000</option>
+                                        <option value="1 to 10" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "1 to 10"}}selected{{/if_eq}}>1 to 10</option>
+                                        <option value="11 to 20" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "11 to 20"}}selected{{/if_eq}}>11 to 20</option>
+                                        <option value="21 to 50" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "21 to 50"}}selected{{/if_eq}}>21 to 50</option>
+                                        <option value="51 to 100" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "51 to 100"}}selected{{/if_eq}}>51 to 100</option>
+                                        <option value="101 to 200" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "101 to 200"}}selected{{/if_eq}}>101 to 200</option>
+                                        <option value="201 to 400" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "201 to 400"}}selected{{/if_eq}}>201 to 400</option>
+                                        <option value="401 to 600" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "401 to 600"}}selected{{/if_eq}}>401 to 600</option>
+                                        <option value="601 to 800" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "601 to 800"}}selected{{/if_eq}}>601 to 800</option>
+                                        <option value="801 to 1,000" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "801 to 1,000"}}selected{{/if_eq}}>801 to 1,000</option>
+                                        <option value="More than 1,000" {{#if_eq wsaipInfo.estimatedNumberOfPermanentEmployees "More than 1,000"}}selected{{/if_eq}}>More than 1,000</option>
                                     </select>
                                 </div>
                             </div>
@@ -133,16 +133,16 @@
                                     <label for="temporary_employees">Estimated Number of Temporary Employees</label>
                                     <select class="custom-select form-control" id="temporary_employees" name="temporary_employees">
                                         <option value="">Select Option</option>
-                                        <option value="1 to 10">1 to 10</option>
-                                        <option value="11 to 20">11 to 20</option>
-                                        <option value="21 to 50">21 to 50</option>
-                                        <option value="51 to 100">51 to 100</option>
-                                        <option value="101 to 200">101 to 200</option>
-                                        <option value="201 to 400">201 to 400</option>
-                                        <option value="401 to 600">401 to 600</option>
-                                        <option value="601 to 800">601 to 800</option>
-                                        <option value="801 to 1,000">801 to 1,000</option>
-                                        <option value="More than 1,000">More than 1,000</option>
+                                        <option value="1 to 10" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "1 to 10"}}selected{{/if_eq}}>1 to 10</option>
+                                        <option value="11 to 20" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "11 to 20"}}selected{{/if_eq}}>11 to 20</option>
+                                        <option value="21 to 50" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "21 to 50"}}selected{{/if_eq}}>21 to 50</option>
+                                        <option value="51 to 100" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "51 to 100"}}selected{{/if_eq}}>51 to 100</option>
+                                        <option value="101 to 200" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "101 to 200"}}selected{{/if_eq}}>101 to 200</option>
+                                        <option value="201 to 400" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "201 to 400"}}selected{{/if_eq}}>201 to 400</option>
+                                        <option value="401 to 600" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "401 to 600"}}selected{{/if_eq}}>401 to 600</option>
+                                        <option value="601 to 800" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "601 to 800"}}selected{{/if_eq}}>601 to 800</option>
+                                        <option value="801 to 1,000" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "801 to 1,000"}}selected{{/if_eq}}>801 to 1,000</option>
+                                        <option value="More than 1,000" {{#if_eq wsaipInfo.estimatedNumberOfTemporaryEmployees "More than 1,000"}}selected{{/if_eq}}>More than 1,000</option>
                                     </select>
                                 </div>
                             </div>
@@ -152,17 +152,17 @@
                                 <div class="form-group">
                                     <label>Do you Export Products?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="export_products" id="export_products_yes" value="Yes"> Yes
+                                        <input type="radio" name="export_products" id="export_products_yes" value="Yes" {{ternary wsaipInfo.doYouExportProducts "checked" ""}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="export_products" id="export_products_no" value="No"> No
+                                        <input type="radio" name="export_products" id="export_products_no" value="No" {{ternary wsaipInfo.doYouExportProducts "" "checked"}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="ugandan_market">Percentage of Market that is Ugandan?</label>
-                                    <input type="number" name="ugandan_market" id="ugandan_market" class="form-control">  
+                                    <input type="number" name="ugandan_market" id="ugandan_market" class="form-control" value="{{wsaipInfo.percentageOfMarketThatIsUgandan}}">  
                                 </div>
                             </div>    
                         </div>
@@ -170,13 +170,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="regional_market">Percentage of Market that is Regional (E.Africa)?</label>
-                                    <input type="number" name="regional_market" id="regional_market" class="form-control">  
+                                    <input type="number" name="regional_market" id="regional_market" class="form-control" value="{{wsaipInfo.percentageOfMarketThatIsRegional}}">  
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="international_market">Percentage of Market that is International?</label>
-                                    <input type="number" name="international_market" id="international_market" class="form-control">  
+                                    <input type="number" name="international_market" id="international_market" class="form-control" value="{{wsaipInfo.percentageOfMarketThatIsInternational}}">  
                                 </div>
                             </div> 
                         </div>
@@ -185,17 +185,17 @@
                                 <div class="form-group">
                                     <label>Do you have an environmental management system in place?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_yes" value="Yes"> Yes
+                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_yes" value="Yes" {{ternary wsaipInfo.doYouHaveAnEnvironmentalManagementSystemInPlace "checked" ""}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_no" value="No"> No
+                                        <input type="radio" name="environmental_management_system" id="environmental_management_system_no" value="No" {{ternary wsaipInfo.doYouHaveAnEnvironmentalManagementSystemInPlace "" "checked"}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="environmental_management_system_used">Please Name the Environmental Management System being used</label>
-                                    <input type="text" name="environmental_management_system_used" id="environmental_management_system_used" class="form-control">  
+                                    <input type="text" name="environmental_management_system_used" id="environmental_management_system_used" class="form-control" value="{{wsaipInfo.environmentalManagementSystemUsed}}">  
                                 </div>
                             </div>    
                         </div>
@@ -204,17 +204,17 @@
                                 <div class="form-group">
                                     <label>Do you subscribe to any international environmental standard e.g ISO, NOSA etc?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="standards_subscription" id="standards_subscription_yes" value="Yes"> Yes
+                                        <input type="radio" name="standards_subscription" id="standards_subscription_yes" value="Yes" {{ternary wsaipInfo.subscribeToAnyInternationalEnvironmentalStandard "checked" ""}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="standards_subscription" id="standards_subscription_no" value="No"> No
+                                        <input type="radio" name="standards_subscription" id="standards_subscription_no" value="No" {{ternary wsaipInfo.subscribeToAnyInternationalEnvironmentalStandard "" "checked"}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="international_standards">If Yes, what Standard(s) do you Subscribe to?</label>
-                                    <input type="text" name="international_standards" id="international_standards" class="form-control">  
+                                    <input type="text" name="international_standards" id="international_standards" class="form-control" value="{{wsaipInfo.standardsSubscribeTo}}">  
                                 </div>
                             </div>    
                         </div>
@@ -223,17 +223,17 @@
                                 <div class="form-group">
                                     <label>Do your Customers Require International Certification?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="international_certification" id="international_certification_yes" value="Yes"> Yes
+                                        <input type="radio" name="international_certification" id="international_certification_yes" value="Yes" {{ternary wsaipInfo.customersRequireInternationalCertification "checked" ""}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="international_certification" id="international_certification_no" value="No"> No
+                                        <input type="radio" name="international_certification" id="international_certification_no" value="No" {{ternary wsaipInfo.customersRequireInternationalCertification "" "checked"}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="land_size">Can you Approximate the size on land in acres occupied by your operations?</label>
-                                    <input type="number" name="land_size" id="land_size" class="form-control">  
+                                    <input type="number" name="land_size" id="land_size" class="form-control" value="{{wsaipInfo.landOccupiedByFirm}}">  
                                 </div>
                             </div>    
                         </div>
@@ -246,14 +246,14 @@
                                 <div class="form-group">
                                     <label for="use_water_yes">Do you use water in your process of Production?</label>
                                     <label class="radio-inline">
-                                    <input type="radio" name="use_water" id="use_water_yes" value="Yes"> Yes
+                                    <input type="radio" name="use_water" id="use_water_yes" value="Yes" {{ternary wsaipInfo.useWaterInProduction "checked" ""}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                    <input type="radio" name="use_water" id="use_water_no" value="No"> No
+                                    <input type="radio" name="use_water" id="use_water_no" value="No" {{ternary wsaipInfo.useWaterInProduction "" "checked"}}> No
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nwsc">Source of water: </label>
                                     <label class="checkbox-inline">
@@ -273,7 +273,7 @@
                                     </label>
                                     
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -281,13 +281,13 @@
                                     <label for="qty_of_water">Quantity of Water Used Daily (Cubic Meters)</label>
                                     <select class="custom-select form-control" id="qty_of_water" name="qty_of_water">
                                         <option value="">Select Option</option>
-                                        <option value="0 - 50">0 - 50</option>
-                                        <option value="51 - 100">51 - 100</option>
-                                        <option value="101 - 200">101 - 200</option>
-                                        <option value="201 - 300">201 - 300</option>
-                                        <option value="301 - 400">301 - 400</option>
-                                        <option value="401 - 500">401 - 500</option>
-                                        <option value="> 500"> > 500</option>
+                                        <option value="0 - 50" {{#if_eq wsaipInfo.waterQuantity "0 - 50"}}selected{{/if_eq}}>0 - 50</option>
+                                        <option value="51 - 100" {{#if_eq wsaipInfo.waterQuantity "51 - 100"}}selected{{/if_eq}}>51 - 100</option>
+                                        <option value="101 - 200" {{#if_eq wsaipInfo.waterQuantity "101 - 200"}}selected{{/if_eq}}>101 - 200</option>
+                                        <option value="201 - 300" {{#if_eq wsaipInfo.waterQuantity "201 - 300"}}selected{{/if_eq}}>201 - 300</option>
+                                        <option value="301 - 400" {{#if_eq wsaipInfo.waterQuantity "301 - 400"}}selected{{/if_eq}}>301 - 400</option>
+                                        <option value="401 - 500" {{#if_eq wsaipInfo.waterQuantity "401 - 500"}}selected{{/if_eq}}>401 - 500</option>
+                                        <option value="> 500" {{#if_eq wsaipInfo.waterQuantity "> 500"}}selected{{/if_eq}}> > 500</option>
                                     </select>
                                 </div>
                             </div>
@@ -295,13 +295,13 @@
                                 <div class="form-group">
                                     <label for="meet_demand_yes">Does your water source/supply meet your demand?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="meet_demand" id="meet_demand_yes" value="Yes"> Yes
+                                        <input type="radio" name="meet_demand" id="meet_demand_yes" value="Yes" {{#if_eq wsaipInfo.waterSupplyMeetDemand "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="meet_demand" id="meet_demand_no" value="No"> No
+                                        <input type="radio" name="meet_demand" id="meet_demand_no" value="No" {{#if_eq wsaipInfo.waterSupplyMeetDemand "No"}}checked{{/if_eq}}> No
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="meet_demand" id="meet_demand_partly" value="Partly"> Partly
+                                        <input type="radio" name="meet_demand" id="meet_demand_partly" value="Partly" {{#if_eq wsaipInfo.waterSupplyMeetDemand "Partly"}}checked{{/if_eq}}> Partly
                                     </label>
                                 </div>
                             </div>
@@ -311,17 +311,17 @@
                                 <div class="form-group">
                                     <label for="water_shortage_yes">Do you experience water shortage sometimes?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="water_shortage" id="water_shortage_yes" value="Yes"> Yes
+                                        <input type="radio" name="water_shortage" id="water_shortage_yes" value="Yes" {{#if_eq wsaipInfo.experienceWaterShortage "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="water_shortage" id="water_shortage_no" value="No"> No
+                                        <input type="radio" name="water_shortage" id="water_shortage_no" value="No" {{#if_eq wsaipInfo.experienceWaterShortage "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>If yes, How often do you experience water shortage</label>
-                                     <input type="text" name="water_shortage_times" id="water_shortage_times" class="form-control">
+                                     <input type="text" name="water_shortage_times" id="water_shortage_times" class="form-control" value="{{wsaipInfo.howOftenExperienceWaterShortage}}">
                                 </div>    
                             </div>
                         </div>
@@ -330,17 +330,17 @@
                                 <div class="form-group">
                                     <label for="water_quality_yes">Does the raw water quality supplied meet your production standards?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="water_quality" id="water_quality_yes" value="Yes"> Yes
+                                        <input type="radio" name="water_quality" id="water_quality_yes" value="Yes" {{#if_eq wsaipInfo.waterQualityMeetProductionStandards "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="water_quality" id="water_quality_no" value="No"> No
+                                        <input type="radio" name="water_quality" id="water_quality_no" value="No" {{#if_eq wsaipInfo.waterQualityMeetProductionStandards "No"}}checked{{/if_eq}}> No
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="water_quality" id="water_quality_partly" value="Partly"> Partly
+                                        <input type="radio" name="water_quality" id="water_quality_partly" value="Partly" {{#if_eq wsaipInfo.waterQualityMeetProductionStandards "Partly"}}checked{{/if_eq}}> Partly
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="improving_quality">If no, How do you deal with improving the quality?</label>
                                     <select class="selectpicker" multiple data-style="form-control" id="improving_quality" name="improving_quality">
@@ -359,24 +359,24 @@
                                         <option>Any other form of treament</option>
                                     </select>
                                 </div>    
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="chemicals_for_treatment_yes">Do you use chemicals for water pre-treatment?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_yes" value="Yes"> Yes
+                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_yes" value="Yes" {{#if_eq wsaipInfo.chemicalsForWaterPretreatment "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_no" value="No"> No
+                                        <input type="radio" name="chemicals_for_treatment" id="chemicals_for_treatment_no" value="No" {{#if_eq wsaipInfo.chemicalsForWaterPretreatment "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="treatment_cost">Cost of Treatment</label>
-                                    <input type="text" name="treatment_cost" id="treatment_cost" class="form-control">
+                                    <input type="text" name="treatment_cost" id="treatment_cost" class="form-control" value="{{wsaipInfo.costOfTreament}}">
                                     
                                 </div>
                             </div>    
@@ -386,14 +386,14 @@
                                 <div class="form-group">
                                     <label for="cost_of_operating_yes">Does the cost of operating these pre-treatment systems prohibitive for your operations?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_yes" value="Yes"> Yes
+                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_yes" value="Yes" {{#if_eq wsaipInfo.costHinderPretreatment "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_no" value="No"> No
+                                        <input type="radio" name="cost_of_operating" id="cost_of_operating_no" value="No" {{#if_eq wsaipInfo.costHinderPretreatment "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="major_treatment_costs">What is the major cost line of your water pre-treatment?</label>
                                     <select class="selectpicker" multiple data-style="form-control" id="major_treatment_costs" name="major_treatment_costs">
@@ -404,26 +404,26 @@
                                         <option>Capital investment</option>
                                     </select>
                                 </div>    
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Do you have a water abstraction permit?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_yes" value="Yes"> Yes
+                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_yes" value="Yes" {{#if_eq wsaipInfo.haveWaterAbstractionPermit "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_no" value="No"> No
+                                        <input type="radio" name="abstraction_permit" id="abstraction_permit_no" value="No" {{#if_eq wsaipInfo.haveWaterAbstractionPermit "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="advice_improve_water_quality">What could your water supplier do to improve water quality</label>
                                     <textarea name="advice_improve_water_quality" id="advice_improve_water_quality" rows="3" class="form-control"></textarea>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </section>
                     <!-- Step 3 -->
@@ -434,22 +434,22 @@
                                 <div class="form-group">
                                     <label>Is your industry in a low-lying area or swampy surrounding?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_yes" value="Yes"> Yes
+                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_yes" value="Yes" {{#if_eq wsaipInfo.industryInSwampySurrounding "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_no" value="No"> No
+                                        <input type="radio" name="industry_in_swamp" id="industry_in_swamp_no" value="No" {{#if_eq wsaipInfo.industryInSwampySurrounding "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="freq_of_flooding">Frequency of flooding or inundation in your area</label>
-                                    <input type="text" class="form-control" id="freq_of_flooding" name="freq_of_flooding">
+                                    <input type="text" class="form-control" id="freq_of_flooding" name="freq_of_flooding" value="{{wsaipInfo.floodingFrequencyInIndustry}}">
                                 </div>
                             </div>
                          </div>
                          <div class="row">
-                             <div class="col-md-6">
+                             {{!-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="flooding_months">What months of the year have more flooding?</label>
                                     <select class="selectpicker" multiple data-style="form-control" id="flooding_months" name="flooding_months">
@@ -467,15 +467,15 @@
                                         <option>Dec</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Are you affected by flooding?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_yes" value="Yes"> Yes
+                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_yes" value="Yes" {{#if_eq wsaipInfo.affectedByFlooding "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_no" value="No"> No
+                                        <input type="radio" name="affected_by_flooding" id="affected_by_flooding_no" value="No" {{#if_eq wsaipInfo.affectedByFlooding "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -484,13 +484,13 @@
                              <div class="col-md-6">
                                  <div class="form-group">
                                     <label for="how_affected_by_flooding">If Yes, How are you affected by flooding?</label>
-                                    <input type="text" class="form-control" id="how_affected_by_flooding" name="how_affected_by_flooding">
+                                    <input type="text" class="form-control" id="how_affected_by_flooding" name="how_affected_by_flooding" value="{{wsaipInfo.howAffectedByFlooding}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="dealt_with_flooding">How have you dealt with the flooding problem?</label>
-                                    <input type="text" class="form-control" id="dealt_with_flooding" name="dealt_with_flooding">
+                                    <input type="text" class="form-control" id="dealt_with_flooding" name="dealt_with_flooding" value="{{wsaipInfo.dealtWithFlooding}}">
                                 </div>
                             </div> 
                          </div>
@@ -499,10 +499,10 @@
                                  <div class="form-group">
                                     <label>Is the entire industrial area paved or made of concrete?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="area_paved" id="area_paved_yes" value="Yes"> Yes
+                                        <input type="radio" name="area_paved" id="area_paved_yes" value="Yes" {{#if_eq wsaipInfo.industrialAreaPaved "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="area_paved" id="area_paved_no" value="No"> No
+                                        <input type="radio" name="area_paved" id="area_paved_no" value="No" {{#if_eq wsaipInfo.industrialAreaPaved "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -510,10 +510,10 @@
                                 <div class="form-group">
                                     <label>Do you have drainage systems like gutters, etc to convey storm water?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="drainage_system" id="drainage_system_yes" value="Yes"> Yes
+                                        <input type="radio" name="drainage_system" id="drainage_system_yes" value="Yes" {{#if_eq wsaipInfo.haveDrainageSystems "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="drainage_system" id="drainage_system_no" value="No"> No
+                                        <input type="radio" name="drainage_system" id="drainage_system_no" value="No" {{#if_eq wsaipInfo.haveDrainageSystems "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -523,10 +523,10 @@
                                  <div class="form-group">
                                     <label>Do you harvest rain water in your industry?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="Yes"> Yes
+                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="Yes" {{#if_eq wsaipInfo.harvestRainWater "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="No"> No
+                                        <input type="radio" name="harvest_rain_water" id="harvest_rain_water" value="No" {{#if_eq wsaipInfo.harvestRainWater "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -535,14 +535,14 @@
                                     <label>If Yes, what is your harvesting capacity in cubic meters?</label>
                                     <select class="custom-select form-control" id="harvest_capacity" name="harvest_capacity">
                                         <option value="">Select Option</option>
-                                        <option value="0-5">0-5</option>
-                                        <option value="5 to 10">5 to 10</option>
-                                        <option value="10 to 20">10 to 20</option>
-                                        <option value="20 to 50">20 to 50</option>
-                                        <option value="50 to 100">50 to 100</option>
-                                        <option value="100 to 200">100 to 200</option>
-                                        <option value="200 to 500">200 to 500</option>
-                                        <option value="More than 500">More than 500</option>
+                                        <option value="0 to 5" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "0 to 5"}}selected{{/if_eq}}>0-5</option>
+                                        <option value="5 to 10" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "5 to 10"}}selected{{/if_eq}}>5 to 10</option>
+                                        <option value="10 to 20" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "10 to 20"}}selected{{/if_eq}}>10 to 20</option>
+                                        <option value="20 to 50" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "20 to 50"}}selected{{/if_eq}}>20 to 50</option>
+                                        <option value="50 to 100" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "50 to 100"}}selected{{/if_eq}}>50 to 100</option>
+                                        <option value="100 to 200" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "100 to 200"}}selected{{/if_eq}}>100 to 200</option>
+                                        <option value="200 to 500" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "200 to 500"}}selected{{/if_eq}}>200 to 500</option>
+                                        <option value="More than 500" {{#if_eq wsaipInfo.rainWaterHarvestingCapacity "More than 500"}}selected{{/if_eq}}>More than 500</option>
                                     </select>
                                 </div>
                             </div> 
@@ -556,10 +556,10 @@
                                 <div class="form-group">
                                     <label>Do you generate wastewater from your process of production?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_yes" value="Yes"> Yes
+                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_yes" value="Yes" {{#if_eq wsaipInfo.generateWasteWaterFromProduction "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_no" value="No"> No
+                                        <input type="radio" name="generate_wastewater" id="generate_wastewater_no" value="No" {{#if_eq wsaipInfo.generateWasteWaterFromProduction "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -568,13 +568,13 @@
                                     <label>Average amount of wastewater generated in cubic meters per day</label>
                                     <select class="custom-select form-control" id="amount_of_wastewater" name="amount_of_wastewater">
                                         <option value="">Select Option</option>
-                                        <option value="0 - 50">0 - 50</option>
-                                        <option value="51 - 100">51 - 100</option>
-                                        <option value="101 - 200">101 - 200</option>
-                                        <option value="201 - 300">201 - 300</option>
-                                        <option value="301 - 400">301 - 400</option>
-                                        <option value="401 - 500">401 - 500</option>
-                                        <option value="> 500"> > 500</option>
+                                        <option value="0 - 50" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "0 - 50"}}selected{{/if_eq}}>0 - 50</option>
+                                        <option value="51 - 100" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "51 - 100"}}selected{{/if_eq}}>51 - 100</option>
+                                        <option value="101 - 200" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "101 - 200"}}selected{{/if_eq}}>101 - 200</option>
+                                        <option value="201 - 300" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "201 - 300"}}selected{{/if_eq}}>201 - 300</option>
+                                        <option value="301 - 400" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "301 - 400"}}selected{{/if_eq}}>301 - 400</option>
+                                        <option value="401 - 500" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "401 - 500"}}selected{{/if_eq}}>401 - 500</option>
+                                        <option value="> 500" {{#if_eq wsaipInfo.wasteWaterAmountGenerated "> 500"}}selected{{/if_eq}}> > 500</option>
                                     </select>
                                 </div>
                             </div>    
@@ -584,17 +584,17 @@
                                 <div class="form-group">
                                     <label>Do you have a collection system for wastewater?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_yes" value="Yes"> Yes
+                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_yes" value="Yes" {{#if_eq wsaipInfo.collectionSystemForWasteWater "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_no" value="No"> No
+                                        <input type="radio" name="collection_system_wastewater" id="collection_system_wastewater_no" value="No" {{#if_eq wsaipInfo.collectionSystemForWasteWater "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="wastewater_treatment_process">What kind of wastewater treament process do you employ?</label>
-                                    <input type="text" class="form-control" id="wastewater_treatment_process" name="wastewater_treatment_process">
+                                    <input type="text" class="form-control" id="wastewater_treatment_process" name="wastewater_treatment_process" value="{{wsaipInfo.wasteWaterTreatmentProcess}}">
                                 </div>
                             </div>
                         </div> 
@@ -603,10 +603,10 @@
                                  <div class="form-group">
                                     <label>Is the treatment process functional to meet your desired outcomes?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="Yes"> Yes
+                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="Yes" {{#if_eq wsaipInfo.treatmentProcessMeetDesiredOutcomes "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="No"> No
+                                        <input type="radio" name="treatment_meet_needs" id="treatment_meet_needs" value="No" {{#if_eq wsaipInfo.treatmentProcessMeetDesiredOutcomes "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -614,10 +614,10 @@
                                 <div class="form-group">
                                     <label>Do you discharge the effluent to the environment?</label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="effluents_to_environment" id="effluents_to_environment_yes" value="Yes"> Yes
+                                        <input type="radio" name="effluents_to_environment" id="effluents_to_environment_yes" value="Yes" {{#if_eq wsaipInfo.dischargeEffluentToEnvironment "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="effluents_to_environment" id="ieffluents_to_environment_no" value="No"> No
+                                        <input type="radio" name="effluents_to_environment" id="ieffluents_to_environment_no" value="No" {{#if_eq wsaipInfo.dischargeEffluentToEnvironment "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -627,17 +627,17 @@
                                 <div class="form-group">
                                     <label>Do you have a wastewater treatment and discharge permit?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_yes" value="Yes"> Yes
+                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_yes" value="Yes" {{#if_eq wsaipInfo.treatmentDischargePermit "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_no" value="No"> No
+                                        <input type="radio" name="treatment_discharge_permit" id="treatment_discharge_permit_no" value="No" {{#if_eq wsaipInfo.treatmentDischargePermit "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="effluent_discharge_area">Where do you discharge your effluent?</label>
-                                    <input type="text" class="form-control" id="effluent_discharge_area" name="effluent_discharge_area">
+                                    <input type="text" class="form-control" id="effluent_discharge_area" name="effluent_discharge_area" value="{{wsaipInfo.effluent_discharge_area}}">
                                     <span class="help-block"><small>E.g Drainage channel, Sewer line, Nearby swamp, wetland, stream, own pit</small></span>
                                 </div>
                             </div>
@@ -647,10 +647,10 @@
                                 <div class="form-group">
                                     <label>Do you have a functional wastewater monitoring laboratory on site?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_yes" value="Yes"> Yes
+                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_yes" value="Yes" {{#if_eq wsaipInfo.wasteWaterMonitoringLabOnSite "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_no" value="No"> No
+                                        <input type="radio" name="monitoring_laboratory" id="monitoring_laboratory_no" value="No" {{#if_eq wsaipInfo.wasteWaterMonitoringLabOnSite "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -660,15 +660,15 @@
                                     <select class="custom-select form-control" id="often_monitor_laboratory" name="often_monitor_laboratory">
                                         <option value="">Select type</option>
                                         <option value="More than once a Day">More than once a Day</option>
-                                        <option value="Daily">Daily</option>
-                                        <option value="Once a Week">Once a Week</option>
-                                        <option value="More than once a Week">More than once a Week</option>
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Quarterly">Quarterly</option>
-                                        <option value="Twice a Year">Twice a Year</option>
-                                        <option value="Annually">Annually</option>
-                                        <option value="After Two Years">After Two Years</option>
-                                        <option value="Not All">Not All</option>
+                                        <option value="Daily" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Daily"}}selected{{/if_eq}}>Daily</option>
+                                        <option value="Once a Week" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Once a Week"}}selected{{/if_eq}}>Once a Week</option>
+                                        <option value="More than once a Week" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "More than once a Week"}}selected{{/if_eq}}>More than once a Week</option>
+                                        <option value="Monthly" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Monthly"}}selected{{/if_eq}}>Monthly</option>
+                                        <option value="Quarterly" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Quarterly"}}selected{{/if_eq}}>Quarterly</option>
+                                        <option value="Twice a Year" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Twice a Year"}}selected{{/if_eq}}>Twice a Year</option>
+                                        <option value="Annually" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Annually"}}selected{{/if_eq}}>Annually</option>
+                                        <option value="After Two Years" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "After Two Years"}}selected{{/if_eq}}>After Two Years</option>
+                                        <option value="Not All" {{#if_eq wsaipInfo.labMonitoringOfWasteWaterTreatment "Not All"}}selected{{/if_eq}}>Not All</option>
                                     </select>
                                 </div>
                             </div> 
@@ -678,10 +678,10 @@
                                 <div class="form-group">
                                     <label>Do you have internally set standards of wastewater treatment?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="Yes"> Yes
+                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="Yes" {{#if_eq wsaipInfo.wasteWaterTreatmentInternalStandards "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="No"> No
+                                        <input type="radio" name="set_internal_standards" id="set_internal_standards" value="No" {{#if_eq wsaipInfo.wasteWaterTreatmentInternalStandards "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -690,9 +690,9 @@
                                     <label for="internal_vs_gov_standard">How would you rate your internally set standards with government standards?</label>
                                     <select class="custom-select form-control" id="internal_vs_gov_standard" name="internal_vs_gov_standard">
                                         <option value="">Select type</option>
-                                        <option value="Higher than Gov">Higher than Gov</option>
-                                        <option value="Equal to Gov">Equal to Gov</option>
-                                        <option value="Lower than Gov">Lower than Gov</option>
+                                        <option value="Higher than Gov" {{#if_eq wsaipInfo.internalVsGovStandards "Higher than Gov"}}selected{{/if_eq}}>Higher than Gov</option>
+                                        <option value="Equal to Gov" {{#if_eq wsaipInfo.internalVsGovStandards "Equal to Gov"}}selected{{/if_eq}}>Equal to Gov</option>
+                                        <option value="Lower than Gov" {{#if_eq wsaipInfo.internalVsGovStandards "Lower than Gov"}}selected{{/if_eq}}>Lower than Gov</option>
                                      </select>
                                 </div>
                             </div> 
@@ -702,10 +702,10 @@
                                 <div class="form-group">
                                     <label>Do you have staff trained for wastewater treatment?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="trained_staff" id="trained_staff" value="Yes"> Yes
+                                        <input type="radio" name="trained_staff" id="trained_staff" value="Yes" {{#if_eq wsaipInfo.wasteWaterTreatmentTrainedStaff "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="trained_staff" id="trained_staff" value="No"> No
+                                        <input type="radio" name="trained_staff" id="trained_staff" value="No" {{#if_eq wsaipInfo.wasteWaterTreatmentTrainedStaff "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
@@ -713,10 +713,10 @@
                                 <div class="form-group">
                                     <label>Would you want any training on waste/ wastewater management?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="training_on_waste" id="training_on_waste_yes" value="Yes"> Yes
+                                        <input type="radio" name="training_on_waste" id="training_on_waste_yes" value="Yes" {{#if_eq wsaipInfo.trainingOnWasteManagement "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="training_on_waste" id="training_on_waste_no" value="No"> No
+                                        <input type="radio" name="training_on_waste" id="training_on_waste_no" value="No" {{#if_eq wsaipInfo.trainingOnWasteManagement "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -726,17 +726,17 @@
                                 <div class="form-group">
                                     <label>Do you recover any products from waste water treatment?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_yes" value="Yes"> Yes
+                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_yes" value="Yes" {{#if_eq wsaipInfo.recoverproductFromWasteWater "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_no" value="No"> No
+                                        <input type="radio" name="products_from_wastewater" id="products_from_wastewater_no" value="No" {{#if_eq wsaipInfo.recoverproductFromWasteWater "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="product_name_from_wastewater">Please Name the Products Recovered from WasteWater?</label>
-                                    <input type="text" class="form-control" id="product_name_from_wastewater" name="product_name_from_wastewater">
+                                    <input type="text" class="form-control" id="product_name_from_wastewater" name="product_name_from_wastewater" value="{{wsaipInfo.productsFromWasteWater}}">
                                 </div>
                             </div>
                         </div>  
@@ -744,10 +744,10 @@
                             <div class="form-group">
                                 <label>Do you treat your wastewater for any level of reuse in the industry?</label><br>
                                 <label class="radio-inline">
-                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_yes" value="Yes"> Yes
+                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_yes" value="Yes" {{#if_eq wsaipInfo.treatWasteWaterForReuse "Yes"}}checked{{/if_eq}}> Yes
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_no" value="No"> No
+                                    <input type="radio" name="treat_for_reuse" id="treat_for_reuse_no" value="No" {{#if_eq wsaipInfo.treatWasteWaterForReuse "No"}}checked{{/if_eq}}> No
                                 </label>
                             </div>
                         </div>           
@@ -759,10 +759,10 @@
                                 <div class="form-group">
                                     <label>Do you have a toilet/latrine on your premises?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="have_latrine" id="have_latrine_yes" value="Yes"> Yes
+                                        <input type="radio" name="have_latrine" id="have_latrine_yes" value="Yes" {{#if_eq wsaipInfo.toiletOnPremises "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="have_latrine" id="have_latrine_no" value="No"> No
+                                        <input type="radio" name="have_latrine" id="have_latrine_no" value="No" {{#if_eq wsaipInfo.toiletOnPremises "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -771,10 +771,10 @@
                                     <label for="type_of_latrine">What type of latrine/tiolet (feacal containment) do you use?</label>
                                     <select class="custom-select form-control" id="type_of_latrine" name="type_of_latrine">
                                         <option value="">Select type</option>
-                                        <option value="Lined Pit Latrine">Lined Pit Latrine</option>
-                                        <option value="Septic Tank">Septic Tank</option>
-                                        <option value="Ventilated Improved Pit Latrine">Ventilated Improved Pit Latrine (VIP)</option>
-                                        <option value="Sewer Line">Sewer Line</option>
+                                        <option value="Lined Pit Latrine" {{#if_eq wsaipInfo.typeOfToilet "Lined Pit Latrine"}}selected{{/if_eq}}>Lined Pit Latrine</option>
+                                        <option value="Septic Tank" {{#if_eq wsaipInfo.typeOfToilet "Septic Tank"}}selected{{/if_eq}}>Septic Tank</option>
+                                        <option value="Ventilated Improved Pit Latrine" {{#if_eq wsaipInfo.typeOfToilet "Ventilated Improved Pit Latrine"}}selected{{/if_eq}}>Ventilated Improved Pit Latrine (VIP)</option>
+                                        <option value="Sewer Line" {{#if_eq wsaipInfo.typeOfToilet "Sewer Line"}}selected{{/if_eq}}>Sewer Line</option>
                                     </select>
                                 </div>
                             </div> 
@@ -784,10 +784,10 @@
                                 <div class="form-group">
                                     <label>Are you connected to any sewer line?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_yes" value="Yes"> Yes
+                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_yes" value="Yes" {{#if_eq wsaipInfo.connectedToSewerLine "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_no" value="No"> No
+                                        <input type="radio" name="connected_to_sewerline" id="connected_to_sewerline_no" value="No" {{#if_eq wsaipInfo.connectedToSewerLine "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -795,10 +795,10 @@
                                 <div class="form-group">
                                     <label>If yes, is it a separate or combined sewer?</label> <br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="separate_or_combined_sewer" value="Yes"> NWSC Main line
+                                        <input type="radio" name="separate_or_combined_sewer" value="NWSC Main line" {{#if_eq wsaipInfo.separateOrCombinedSewer "NWSC Main line"}}checked{{/if_eq}}> NWSC Main line
                                     </label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="separate_or_combined_sewer" value="No"> Industrial Line that connects to Lagoon
+                                        <input type="radio" name="separate_or_combined_sewer" value="Industrial Line that connects to Lagoon" {{#if_eq wsaipInfo.separateOrCombinedSewer "Industrial Line that connects to Lagoon"}}checked{{/if_eq}}> Industrial Line that connects to Lagoon
                                     </label>
                                 </div>
                             </div>     
@@ -807,13 +807,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>If not connected to a sewer line, how do you empty your toilet?</label>
-                                    <input type="text" name="how_empty_toilet" class="form-control">
+                                    <input type="text" name="how_empty_toilet" class="form-control" value="{{wsaipInfo.howEmptyToilet}}">
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>How often do you empty the toilet?</label>
-                                    <input type="text" name="often_empty_toilet" class="form-control">
+                                    <input type="text" name="often_empty_toilet" class="form-control" value="{{wsaipInfo.howOftenEmptyToilet}}">
                                 </div>
                             </div>      
                         </div>
@@ -821,13 +821,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Where do you discharge the feacal sludge from the toilet?</label>
-                                    <input type="text" name="where_discharge_sludge" class="form-control">
+                                    <input type="text" name="where_discharge_sludge" class="form-control" value="{{wsaipInfo.whereDischargeFeacalSludge}}">
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>How much does it cost you to discharge the sludge?</label>
-                                    <input type="text" name="cost_discharge_sludge" class="form-control">
+                                    <input type="text" name="cost_discharge_sludge" class="form-control" value="{{wsaipInfo.costOfSludgeDischarge}}">
                                 </div>
                             </div> 
                         </div>
@@ -839,10 +839,10 @@
                                 <div class="form-group">
                                     <label>Do you generate solid waste from your processs of production?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_yes" value="Yes"> Yes
+                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_yes" value="Yes" {{#if_eq wsaipInfo.generateSolidWaste "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_no" value="No"> No
+                                        <input type="radio" name="generate_solid_waste" id="generate_solid_waste_no" value="No" {{#if_eq wsaipInfo.generateSolidWaste "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -851,13 +851,13 @@
                                     <label for="type_of_solid_waste">What type of solid waste do you generate?</label>
                                     <select class="custom-select form-control" id="type_of_solid_waste" name="type_of_solid_waste">
                                         <option value="">Select type</option>
-                                        <option value="Organic">Organic</option>
-                                        <option value="Bio-Degradable">Bio-Degradable</option>
-                                        <option value="Glass">Glass</option>
-                                        <option value="Metallic">Metallic</option>
-                                        <option value="Chemical">Chemical</option>
-                                        <option value="Medical Waste">Medical Waste</option>
-                                        <option value="Plastic">Plastic</option>
+                                        <option value="Organic" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Organic"}}selected{{/if_eq}}>Organic</option>
+                                        <option value="Bio-Degradable" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Bio-Degradable"}}selected{{/if_eq}}>Bio-Degradable</option>
+                                        <option value="Glass" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Glass"}}selected{{/if_eq}}>Glass</option>
+                                        <option value="Metallic" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Metallic"}}selected{{/if_eq}}>Metallic</option>
+                                        <option value="Chemical" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Chemical"}}selected{{/if_eq}}>Chemical</option>
+                                        <option value="Medical Waste" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Medical Waste"}}selected{{/if_eq}}>Medical Waste</option>
+                                        <option value="Plastic" {{#if_eq wsaipInfo.typeOfSolidWasteGenerated "Plastic"}}selected{{/if_eq}}>Plastic</option>
                                     </select>
                                 </div>
                             </div> 
@@ -868,20 +868,20 @@
                                     <label for="solid_waste_generated">What is your average amount of solid waste generated in Kgs per day?</label>
                                     <select class="custom-select form-control" id="solid_waste_generated" name="solid_waste_generated">
                                         <option value="">Select range</option>
-                                        <option value="0 - 50">0 - 50</option>
-                                        <option value="51 - 100">51 - 100</option>
-                                        <option value="101 - 200">101 - 200</option>
-                                        <option value="201 - 300">201 - 300</option>
-                                        <option value="301 - 400">301 - 400</option>
-                                        <option value="401 - 500">401 - 500</option>
-                                        <option value="> 500"> > 500</option>
+                                        <option value="0 - 50" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "0 - 50"}}selected{{/if_eq}}>0 - 50</option>
+                                        <option value="51 - 100" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "51 - 100"}}selected{{/if_eq}}>51 - 100</option>
+                                        <option value="101 - 200" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "101 - 200"}}selected{{/if_eq}}>101 - 200</option>
+                                        <option value="201 - 300" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "201 - 300"}}selected{{/if_eq}}>201 - 300</option>
+                                        <option value="301 - 400" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "301 - 400"}}selected{{/if_eq}}>301 - 400</option>
+                                        <option value="401 - 500" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "401 - 500"}}selected{{/if_eq}}>401 - 500</option>
+                                        <option value="> 500" {{#if_eq wsaipInfo.amountOfSolidWasteGenerated "> 500"}}selected{{/if_eq}}> > 500</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>How do you dispose-off the generated solid waste?</label>
-                                    <input type="text" name="how_dispose_solid_waste" class="form-control">
+                                    <input type="text" name="how_dispose_solid_waste" class="form-control" value="{{wsaipInfo.howDisposeSolidWaste}}">
                                     <span class="help-block"><small>E.g (Landfill, Solid waste companies pick it, burn it, dig a pit, reuse it, give it out to farmers for fertizers, )</small></span>
                                 </div>
                             </div> 
@@ -893,15 +893,15 @@
                                     <select class="custom-select form-control" id="often_dispose_solid_waste" name="often_dispose_solid_waste">
                                         <option value="">Select range</option>
                                         <option value="More than once a Day">More than once a Day</option>
-                                        <option value="Daily">Daily</option>
-                                        <option value="Once a Week">Once a Week</option>
-                                        <option value="More than once a Week">More than once a Week</option>
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Quarterly">Quarterly</option>
-                                        <option value="Twice a Year">Twice a Year</option>
-                                        <option value="Annually">Annually</option>
-                                        <option value="After Two Years">After Two Years</option>
-                                        <option value="Not All">Not All</option>
+                                        <option value="Daily" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Daily"}}selected{{/if_eq}}>Daily</option>
+                                        <option value="Once a Week" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Once a Week"}}selected{{/if_eq}}>Once a Week</option>
+                                        <option value="More than once a Week" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "More than once a Week"}}selected{{/if_eq}}>More than once a Week</option>
+                                        <option value="Monthly" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Monthly"}}selected{{/if_eq}}>Monthly</option>
+                                        <option value="Quarterly" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Quarterly"}}selected{{/if_eq}}>Quarterly</option>
+                                        <option value="Twice a Year" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Twice a Year"}}selected{{/if_eq}}>Twice a Year</option>
+                                        <option value="Annually" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Annually"}}selected{{/if_eq}}>Annually</option>
+                                        <option value="After Two Years" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "After Two Years"}}selected{{/if_eq}}>After Two Years</option>
+                                        <option value="Not All" {{#if_eq wsaipInfo.howOftenDisposeSolidWaste "Not All"}}selected{{/if_eq}}>Not All</option>
                                     </select>
                                 </div>
                             </div>
@@ -909,10 +909,10 @@
                                 <div class="form-group">
                                     <label>Do you Segregrate your Waste</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="segregate_waste" id="segregate_waste_yes" value="Yes"> Yes
+                                        <input type="radio" name="segregate_waste" id="segregate_waste_yes" value="Yes" {{#if_eq wsaipInfo.segregateWaste "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="segregate_waste" id="segregate_waste_no" value="No"> No
+                                        <input type="radio" name="segregate_waste" id="segregate_waste_no" value="No" {{#if_eq wsaipInfo.segregateWaste "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -922,10 +922,10 @@
                                 <div class="form-group">
                                     <label>Do you Recyle Waste</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="recycle_waste" id="recycle_waste_yes" value="Yes"> Yes
+                                        <input type="radio" name="recycle_waste" id="recycle_waste_yes" value="Yes" {{#if_eq wsaipInfo.recycleWaste "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="recycle_waste" id="recycle_waste_no" value="No"> No
+                                        <input type="radio" name="recycle_waste" id="recycle_waste_no" value="No" {{#if_eq wsaipInfo.recycleWaste "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -933,10 +933,10 @@
                                 <div class="form-group">
                                     <label>Do you recover any products from solid waste?</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_yes" value="Yes"> Yes
+                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_yes" value="Yes" {{#if_eq wsaipInfo.recoverProductsFromSolidWaste "Yes"}}checked{{/if_eq}}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_no" value="No"> No
+                                        <input type="radio" name="recover_product_from_solid_waste" id="recover_product_from_solid_waste_no" value="No" {{#if_eq wsaipInfo.recoverProductsFromSolidWaste "No"}}checked{{/if_eq}}> No
                                     </label>
                                 </div>
                             </div> 
@@ -945,13 +945,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>If yes, Please Name the Products Recovered from Solid Waste?</label>
-                                    <input type="text" name="products_recovered" class="form-control"> 
+                                    <input type="text" name="products_recovered" class="form-control" value="{{wsaipInfo.productsRecoveredFromSolidWaste}}"> 
                                 </div>
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="general_comment">Any Comment/Solution regarding Water, Waste and Environment?</label>
-                                    <textarea name="general_comment" id="general_comment" rows="3" class="form-control"></textarea>
+                                    <textarea name="general_comment" id="general_comment" rows="3" class="form-control">{{wsaipInfo.generalComments}}</textarea>
                                 </div>
                             </div>
                         </div>

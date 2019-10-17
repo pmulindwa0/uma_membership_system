@@ -28,7 +28,7 @@
                     <tbody>
                         {{# each wsaipData}}
                         {{wsaipData.interviewee}}
-                        <tr class='clickable-row' data-href='wsaip/data/{{_id}}'>
+                        <tr onclick="window.location='wsaip/data/{{_id}}';">
                             <td>{{member.company_name}}</td>
                             <td>{{member.physical_address}}</td>
                             <td>{{member.telephone_number}}</td>

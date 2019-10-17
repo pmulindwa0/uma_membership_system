@@ -42,8 +42,24 @@ $(document).ready(function(){
 				url: url,
 				type:'DELETE',
 				success: function(result){
-					console.log('Deleting job order...');
 					window.location.href='/users/view';
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});
+		}
+	});
+	$('.delete-wsaip').on('click', function(){
+		var id = $(this).data('id');
+		var url = '/wsaip/data/'+id;
+		if(confirm('Delete response?')){
+			$.ajax({
+				url: url,
+				type:'DELETE',
+				success: function(result){
+					window.location.href='/wsaip/data';
+					
 				},
 				error: function(err){
 					console.log(err);
