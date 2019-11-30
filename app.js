@@ -21,7 +21,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const authenticate = require('./middleware/auth');
 require('./startup/prod')(app);
-// /usr/bin/flock -n /tmp/mylock.lock /home/umamembership/nodejs/bin/node /home/umamembership/app/app.js
+ 
 HandlebarsIntl.registerWith(Handlebars);
 Handlebars.registerHelper('ternary', require('handlebars-helper-ternary'));
 Handlebars.registerHelper('if_eq', function(a, b, opts) {
@@ -61,11 +61,11 @@ app.use(session({
 app.use(flash());
 // Remote connection
 // Mongodb atlas
-/*
+
 mongoose.connect('mongodb+srv://pecode:BMg9uiLo@umadatabase-q9z2l.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
-*/
+
   //MLab
   /*
   mongoose.connect('mongodb://pecode:BMg9uiLo@ds064718.mlab.com:64718/uma', { useNewUrlParser: true })
@@ -73,11 +73,11 @@ mongoose.connect('mongodb+srv://pecode:BMg9uiLo@umadatabase-q9z2l.mongodb.net/te
   .catch(err => console.error('Could not connect to MongoDB...'));
   */
 // local connection
-
+/*
 mongoose.connect('mongodb://localhost/umadb', { useNewUrlParser: true })
 .then(() => console.log('Connected to MongoDB...'))
 .catch(err => console.error('Could not connect to MongoDB...'));
-
+*/
 mongoose.set('useCreateIndex', true);
 
 app.use(bodyParser.urlencoded({extended: false}));
