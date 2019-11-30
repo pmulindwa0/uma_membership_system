@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 const path = require('path');
 const multer = require('multer');
-const materials = require('./routes/materials');
-const stocks = require('./routes/stocks');
-const jobs = require('./routes/jobs');
-const orders = require('./routes/orders');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const dashboard = require('./routes/dashboard');
 const membership = require('./routes/membership');
 const application = require('./routes/application');
+const capacity = require('./routes/capacity');
 const wsaip = require('./routes/wsaip');
+const mails = require('./routes/mails');
+const events = require('./routes/events');
 const express = require('express');
 const hbs = require('express-handlebars');
 const Handlebars = require('handlebars');
@@ -22,7 +21,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const authenticate = require('./middleware/auth');
 require('./startup/prod')(app);
-
+// /usr/bin/flock -n /tmp/mylock.lock /home/umamembership/nodejs/bin/node /home/umamembership/app/app.js
 HandlebarsIntl.registerWith(Handlebars);
 Handlebars.registerHelper('ternary', require('handlebars-helper-ternary'));
 Handlebars.registerHelper('if_eq', function(a, b, opts) {
@@ -51,19 +50,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 // initialise session middleware - flash-express depends on it
 app.use(session({
   secret : "djhxcvxfgshajfgjhgsjhfgsakjeauytsdfy",
-  resave: false,
-  saveUninitialized: false
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: (30 * 24 * 60 * 60 * 1000)
+  }
 }));
 
 // initialise the flash middleware
 app.use(flash());
 // Remote connection
+// Mongodb atlas
 /*
-mongoose.connect('mongodb://shoeapp:BMg9uiLo@ds016718.mlab.com:16718/shoeapp', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://pecode:BMg9uiLo@umadatabase-q9z2l.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 */
-
+  //MLab
+  /*
+  mongoose.connect('mongodb://pecode:BMg9uiLo@ds064718.mlab.com:64718/uma', { useNewUrlParser: true })
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => console.error('Could not connect to MongoDB...'));
+  */
 // local connection
 
 mongoose.connect('mongodb://localhost/umadb', { useNewUrlParser: true })
@@ -77,16 +85,15 @@ app.use(bodyParser.json());
 
 app.use('/', auth);
 app.use('/application', application);
+app.use('/capacity', capacity);
 app.use(authenticate);
-app.use('/membership', membership);
 app.use('/dashboard', dashboard);
-app.use('/materials', materials);
-app.use('/stock-take', stocks);
-app.use('/job-order', jobs);
-app.use('/material-order', orders);
 app.use('/users', users);
+app.use('/events', events);
 app.use(fileUpload());
 app.use('/wsaip', wsaip);
+app.use('/membership', membership);
+app.use('/notification', mails);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`));

@@ -28,12 +28,23 @@
     <link href="plugins/bower_components/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
     {{!-- dropfy --}}
     <link rel="stylesheet" href="plugins/bower_components/dropify/dist/css/dropify.min.css">
+    <!-- wysihtml5 CSS -->
+    <link rel="stylesheet" href="plugins/bower_components/html5-editor/bootstrap-wysihtml5.css" />
+    <!-- Footable CSS -->
+    <link href="plugins/bower_components/footable/css/footable.bootstrap.min.css" rel="stylesheet">
+    <!-- Dropzone css -->
+    <link href="plugins/bower_components/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <style>
+        #filterDiv{
+            display: none;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -143,7 +154,8 @@
                             {{!-- <li> <a href="/materials"><i class="fa-fw">M</i><span class="hide-menu">Materials</span></a> </li>
                             <li> <a href="/stock-take"><i class="fa-fw">ST</i><span class="hide-menu">Stock Take</span></a> </li> --}}
                             <li> <a href="/membership"><i data-icon="&#xe001;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Membership Data</span></a> </li>
-                            {{!-- <li> <a href="#"><i class="fa-fw">VO</i><span class="hide-menu">View Orders</span></a> </li> --}}
+                            <li> <a href="/notification"><i data-icon="'" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Push Notification</span></a> </li>
+                            <li> <a href="/events"><i data-icon="'" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Events</span></a> </li>
                         </ul>
                     </li>
                     {{/if_eq}}
@@ -158,8 +170,8 @@
                     {{#if user.isAdmin }}
                     <li> <a href="#" class="waves-effect"><i class="mdi mdi-account-multiple fa-fw" data-icon="v"></i> <span class="hide-menu"> Users <span class="fa arrow"></span> </span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="/users"><i class=" fa-fw">RP</i><span class="hide-menu">Register User</span></a> </li>
-                            <li> <a href="/users/view"><i class=" fa-fw">VP</i><span class="hide-menu">View Users</span></a> </li>
+                            <li> <a href="/users"><i class="fas fa-user-plus"> </i><span class="hide-menu"> Register User</span></a> </li>
+                            <li> <a href="/users/view"><i class="fas fa-users"></i><span class="hide-menu"> View Users</span></a> </li>
                         </ul>
                     </li>
                     {{/if}}
@@ -178,20 +190,19 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 {{#if messages.info}}
-                <div id="alerttopleft" class="myadmin-alert myadmin-alert-img alert-success myadmin-alert-top-left" style="display: block;"> 
-                    {{!-- <img src="../plugins/images/users/genu.jpg" class="img" alt="img"> --}}
+                <div id="alerttopright" class="myadmin-alert myadmin-alert-img alert-success myadmin-alert-top-right" style="display: block;"> 
                     <h4>Success..!</h4>
-                    <a href="#" class="closed">×</a>
+                    <a href="#" class="closed">&times;</a>
                     <i class="img mdi mdi-check fa-fw fa-5x" style="font-size: 30px"></i>
                     <p>{{messages.info}}</p>
                 </div>
                 {{/if}}
 
                 {{#if messages.error}}
-                <div id="alerttopleft" class="myadmin-alert myadmin-alert-img alert-danger myadmin-alert-top-left" style="display: block;"> 
+                <div id="alerttopright" class="myadmin-alert myadmin-alert-img alert-danger myadmin-alert-top-left" style="display: block;"> 
                     {{!-- <img src="../plugins/images/users/genu.jpg" class="img" alt="img"> --}}
                     <h4>Error!</h4>
-                    <a href="#" class="closed">×</a>
+                    <button type="button" class="close">×</button>
                     <i class="img mdi mdi-shield-outline fa-fw large" style="font-size: 30px"></i>
                     <p>{{messages.error}}</p>
                 </div>
@@ -201,7 +212,7 @@
         
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> 2019 &copy; All Rights Reserved to UMA | Developed by <strong>Digbit Technologies</strong> </footer>
+        <footer class="footer text-center"> <strong>Copyright &copy; Uganda Manufacturers Association,</strong> All Rights Reserved</footer>
     </div>
         <!-- /#page-wrapper -->
     </div>
@@ -230,6 +241,14 @@
     <script src="js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
+    <script src="plugins/bower_components/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="plugins/bower_components/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script src="plugins/bower_components/dropzone-master/dist/dropzone.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.textarea_editor').wysihtml5();
+    });
+    </script>
     <!-- jQuery for carousel -->
     <script src="plugins/bower_components/owl.carousel/owl.carousel.min.js"></script>
     <script src="plugins/bower_components/owl.carousel/owl.custom.js"></script>
@@ -245,6 +264,7 @@
     <script src="js/main.js"></script>
     <script type="text/JavaScript">
     $(document).ready(function () {
+
         //******************************************//
         // Markers 0.328148,32.6078928, 32.6147324	0.3140376, 32.6124464, 0.3142874
         //******************************************//
@@ -285,6 +305,7 @@
                 }
             });
         {{/each}}
+       
         });
     </script>
     <script>
@@ -386,6 +407,13 @@
     </script>
     <!-- Form Wizard JavaScript -->
     <script src="plugins/bower_components/moment/moment.js"></script>
+    <!-- Footable -->
+    <script src="plugins/bower_components/footable/js/footable.min.js"></script>
+    <script>
+         // Row Toggler
+        // -----------------------------------------------------------------
+        $('#demo-foo-addrow').footable();
+    </script>
     <script src="plugins/bower_components/jquery-wizard-master/jquery.steps.min.js"></script>
     <script src="plugins/bower_components/jquery-wizard-master/jquery.validate.min.js"></script>
     
@@ -641,24 +669,56 @@
     </script>
     <script src="js/json2csv.js"></script>
     <script type="text/JavaScript">
-    $(document).ready(function() {
-        let myJson = '{{wsaipData}}';
-        console.log(typeof(myJson));
-        $('.export').click(function() {
-            {{# each wsaipData }}
-                console.log("{{x_coordinates}}");
-            {{/each}}
-           let myCars = {
-                "car":
-                {
-                    "name": ["Audi"],
-                    "price": ["40000"],
-                    "color": ["blue"]
-                }
-            };
-            
-        //csvConverter.convert(myJson);
-        });
+        function displayFilter() {
+		let x = document.getElementById("filterDiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+	}
+    </script>
+    <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    <script src="js/toastr.js"></script>
+    <script type="text/javascript">
+    //Alerts
+    $(".myadmin-alert .closed").click(function(event) {
+        $(this).parents(".myadmin-alert").fadeToggle(350);
+        return false;
+    });
+    /* Click to close */
+    $(".myadmin-alert-click").click(function(event) {
+        $(this).fadeToggle(350);
+        return false;
+    });
+    $(".showtop").click(function() {
+        $(".alerttop").fadeToggle(350);
+    });
+    $(".showtop2").click(function() {
+        $(".alerttop2").fadeToggle(350);
+    });
+    /** Alert Position Bottom  **/
+    $(".showbottom").click(function() {
+        $(".alertbottom").fadeToggle(350);
+    });
+    $(".showbottom2").click(function() {
+        $(".alertbottom2").fadeToggle(350);
+    });
+    /** Alert Position Top Left  **/
+    $("#showtopleft").click(function() {
+        $("#alerttopleft").fadeToggle(350);
+    });
+    /** Alert Position Top Right  **/
+    $("#showtopright").click(function() {
+        $("#alerttopright").fadeToggle(350);
+    });
+    /** Alert Position Bottom Left  **/
+    $("#showbottomleft").click(function() {
+        $("#alertbottomleft").fadeToggle(350);
+    });
+    /** Alert Position Bottom Right  **/
+    $("#showbottomright").click(function() {
+        $("#alertbottomright").fadeToggle(350);
     });
     </script>
     <script src="plugins/bower_components/Chart.js/Chart.min.js"></script>

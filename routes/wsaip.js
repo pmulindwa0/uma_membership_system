@@ -15,10 +15,10 @@ router.post('/questionnaire', async(req, res)=>{
     console.log(req.body);
     const { error } = validate(req.body); // Destructuring
     // if (error) return res.status(400).send(error.details[0].message);
-    if (error) {
-        req.flash('error', error.details[0].message);
-        res.redirect('/wsaip/questionnaire');
-    }
+    // if (error) {
+    //     req.flash('error', error.details[0].message);
+    //     res.redirect('/wsaip/questionnaire');
+    // }
 
     const member = await Member.findById(req.body.firm);
     if(!member) return res.status(400).send('Invalid member..');
@@ -116,6 +116,10 @@ router.post('/questionnaire', async(req, res)=>{
 
     wsaip = await wsaip.save();
 
+    if (!wsaip) {
+        req.flash('error', "Server Failure, Unable to capture data");
+        res.redirect('/wsaip/questionnaire');
+    }
     req.flash('info', "Data successfully captured");
     res.redirect('/wsaip/questionnaire');
 });
@@ -163,8 +167,8 @@ router.get('/data', async(req,res) => {
     const sectors = await Wsaip.distinct("member.sector");
     const employees = await Wsaip.distinct("estimatedNumberOfPermanentEmployees");
     const turnover = await Wsaip.distinct("member.turnover");
-    res.locals.data = JSON.stringify(wsaipData);
-    res.render('wsaip_reports', {title: "Collected Data", wsaipData: wsaipData, user: req.user, district: district, sectors: sectors, employees: employees, turnover: turnover});
+    const dataString = JSON.stringify(wsaipData);
+    res.render('wsaip_reports', {title: "Collected Data", wsaipData: wsaipData, dataString:dataString, user: req.user, district: district, sectors: sectors, employees: employees, turnover: turnover});
 });
 
 router.post('/data', async(req, res)=>{
@@ -207,7 +211,7 @@ router.post('/data', async(req, res)=>{
 
     queryArr.map(
         (value, index) => {
-            queryObj[`${value}`] = "yes";
+            queryObj[`${value}`] = "Yes";
             // temp_obj[value] = "";
             return queryObj;
         }
@@ -261,8 +265,10 @@ router.delete('/data/:id', async (req, res) => {
     res.sendStatus(200);
   });
 
-router.get('/coordinates', async(req, res) =>{
-    res.send(req.app.locals.globalVariable);
+router.get('/coordinates/:data', async(req, res) =>{
+    const response = req.params.data;
+    console.log('hello')
+    res.send("response");
 });
 
 router.get('/update/:id', async (req, res) => {
@@ -370,7 +376,7 @@ router.get('/update/:id', async (req, res) => {
     }
   
     req.flash('info','Response successfully updated!');
-        res.redirect('/wsaip/data');
+    res.redirect('/wsaip/data');
   });
     
 module.exports = router;

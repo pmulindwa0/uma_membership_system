@@ -21,7 +21,8 @@ const storage = multer.diskStorage({
   }).fields([
     {name: 'license'},
     {name: 'ura'},
-    {name: 'nssf'}
+    {name: 'nssf'},
+    {name: 'logo'}
   ]);
   // Check File Type
 function checkFileType(file, cb){
@@ -69,7 +70,7 @@ router.post('/', upload, async (req, res) => {
         whatsapp_number: req.body.whatsapp,
         skype: req.body.skype,
         selling_point: req.body.seeling_point,
-        sector: req.body.business,
+        nature_of_business: req.body.business,
         products: req.body.fields,
         product_hs_codes: req.body.fields2,
         product_brands: req.body.fields3,
@@ -97,7 +98,8 @@ router.post('/', upload, async (req, res) => {
         establishment_date: req.body.establishment,
         license: `uploads/${req.files.license[0].filename}`,
         ura: `uploads/${req.files.ura[0].filename}`,
-        nssf: `uploads/${req.files.nssf[0].filename}`
+        nssf: `uploads/${req.files.nssf[0].filename}`,
+        logo: `uploads/${req.files.logo[0].filename}`
     });
     member = await member.save();
 

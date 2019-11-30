@@ -1,0 +1,107 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> </div>
+    <!-- /.col-lg-12 -->
+</div>
+<form action="/events/attendance/{{eventID}}" method="post">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="m-b-5 box-title">Add to Attendence List</h3>
+                {{!-- <p class="text-muted"> Use a <code>select multiple</code> as your input element.</p> --}} 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Member</label>
+                        <select class="form-control select2" data-style="form-control" name="members">
+                            <option value="">Select Option</option>
+                            {{# each members }}
+                            <option value="{{this._id}}">{{this.company_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-md-12">Represantative(s)</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line" name="representative"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-20">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-md-12">Email</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line" name="repEmail"> </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-md-12">Phone Number</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line" name="repTel"> </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-md-12">Title</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line" name="repTitle"> </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="button-box">
+                            <button type="submit" class="btn btn-info btn-outline"><i class="fas fa-plus-circle"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            {{!-- <h3 class="box-title m-b-0">Membership List</h3> --}}
+            <h4 class="card-title">{{event.title}} Attendence list</h4>
+         
+            <div class="table-responsive">
+                <table id="example23" class="display table table-hover table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Representative</th>
+                            <th>Title</th>
+                            <th>Telephone</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{# each eventAttendants}}
+                        <tr>
+                            <td>{{ company_name }}</td>
+                            <td>{{ representative }}</td>
+                            <td>{{ title }}</td>
+                            <td>{{ telephone_number }}</td>
+                            <td>{{ email }}</td>
+                            <td>
+                                <div class="btn-group dropdown m-r-10">
+                                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default btn-outline dropdown-toggle waves-effect waves-light" type="button">Action<span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInY" style="float:left;">
+                                        <li><a href="membership/{{_id}}/delete">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    <br>
+                    <br>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

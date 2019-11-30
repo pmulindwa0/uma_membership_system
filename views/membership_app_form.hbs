@@ -53,7 +53,7 @@
                 <!-- multistep form -->
                 <form id="msform" style="max-width: 1000px" method="POST" action="/application" enctype="multipart/form-data" >
                     <!-- progressbar -->
-                    <ul id="eliteregister">
+                    <ul id="eliteregister" class="center">
                         <li class="active">Section I</li>
                         <li>Section II</li>
                         <li>Section III</li>
@@ -61,42 +61,48 @@
                     </ul>
                     <!-- fieldsets -->
                     <fieldset>
-                        <h2 class="fs-title">Company Contact Details</h2>
+                        <h2 class="fs-title center">Company Contact Details</h2>
                         {{!-- <h3 class="fs-subtitle">This is step 1</h3> --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="company">Company Name</label>
                                     <input type="text" class="form-control" id="company" name="company"
-                                        placeholder="Company Name">
+                                        placeholder="Company Name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="office">Physical Address</label>
                                     <input type="text" class="form-control" id="office" name="office"
-                                        placeholder="Head Office - Physical Address"> </div>
+                                        placeholder="Head Office - Physical Address" required> </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="box">Box Number</label>
                                     <input type="text" class="form-control" name="box" id="box" placeholder="P.O. Box">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="tel_no">Telephone Number</label>
                                     <input type="tel" class="form-control" id="tel_no" name="tel_no"
-                                        placeholder="Telephone No."> </div>
+                                        placeholder="Telephone No." required> </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="email">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="E-mail Address">
+                                        placeholder="E-mail Address" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="whatsapp">Whatsapp Number</label>
                                     <input type="tel" class="form-control" id="whatsapp" name="whatsapp"
                                         placeholder="Whatsapp Number"> </div>
                             </div>
@@ -104,11 +110,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="web">Website Link</label>
                                     <input type="text" class="form-control" id="web" name="web" placeholder="Website">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="facebook">Facebook Account</label>
                                     <input type="text" class="form-control" id="facebook" name="facebook"
                                         placeholder="Facebook Account"> </div>
                             </div>
@@ -116,12 +124,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="twitter">Twitter Handle</label>
                                     <input type="text" class="form-control" id="tweeter" name="tweeter"
                                         placeholder="Tweeter Handle">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="skype">Skype</label>
                                     <input type="text" class="form-control" id="skype" name="skype" placeholder="Skype">
                                 </div>
                             </div>
@@ -129,12 +139,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="fax">Fax Number</label>
                                     <input type="text" class="form-control" id="fax" name="fax"
                                         placeholder="Fax number">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="selling_point">Unique Selling Point</label>
                                     <input type="text" class="form-control" name="selling_point" id="selling-point"
                                         placeholder="Unique Selling Point">
                                 </div>
@@ -143,28 +155,28 @@
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Social Profiles</h2>
-                        <h3 class="fs-subtitle">Your presence on the social network</h3>
+                        <h2 class="fs-title">Business Outlook</h2>
+                        {{!-- <h3 class="fs-subtitle">Your presence on the social network</h3> --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="business">Nature of Business</label>
                                     <input type="text" class="form-control" id="business" name="business"
-                                        placeholder="Nature of Business">
+                                        placeholder="Nature of Business" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="establishment">Business Establishment Date</label>
                                     <input type="date" class="form-control" id="establishment" name="establishment"
-                                        placeholder="Business establishment Date"> 
-                                    <small id="passwordHelpBlock" class="form-text text-muted">
-                                        Business establishment Date
-                                    </small>
+                                        placeholder="Business establishment Date" required> 
                                 </div>    
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="ownership">Type of Ownership</label>
                                     <select class="custom-select form-control" id="ownership" name="ownership">
                                         <option value="">Type of Ownership</option>
                                         <option value="Limited Company, Private/Public">Limited Company, Private/Public
@@ -175,8 +187,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="investment">Capital Investment: (Plant & Machinery)</label>
                                     <select class="custom-select form-control" id="investment" name="investment">
-                                        <option value="">Capital Investment: (Plant & Machinery)</option>
+                                        <option value="">Capital Investment</option>
                                         <option value="Below 100 million">Below 100 million</option>
                                         <option value="101 - 200 million">101 - 200 million</option>
                                         <option value="201 - 300 million">201 - 300 million</option>
@@ -190,6 +203,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="turnover">Estimated Annual Turnover</label>
                                     <select class="custom-select form-control" id="turnover" name="turnover">
                                         <option value="">Annual Turnover</option>
                                         <option value="Below 100 million">Below 100 million</option>
@@ -203,6 +217,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="custom-file-label" for="employees">Labour Force</label>
                                     <select class="custom-select form-control" id="employees" name="employees">
                                         <option value="">Labour Force</option>
                                         <option value="Below 100 employees">Below 100 employees</option>
@@ -225,23 +240,28 @@
                                 <div class="entry input-group">
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label class="custom-file-label" for="pdt_name">Product/Service Name</label>
                                             <input type="text" class="form-control" id="pdt_name" name="fields"
                                                 placeholder="Product Name">
+                                                
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label class="custom-file-label" for="HScode">H.S Code</label>
                                             <input type="text" class="form-control" id="HScode" name="fields2"
                                                 placeholder="H.S Code"> </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label class="custom-file-label" for="brand_name">Brand Name</label>
                                             <input type="text" class="form-control" id="brand_name" name="fields3"
                                                 placeholder="Brand Name">
                                         </div>
                                     </div>
                                     <div class="col-md-2 right">
                                         <div class="form-group">
+                                            <label class="custom-file-label" > </label>
                                             <span>
                                                 <button type="button" class="btn btn-success btn-lg btn-add">
                                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -262,12 +282,14 @@
                                 <div class="entry input-group">
                                     <div class="col-md-5">
                                         <div class="form-group">
+                                            <label class="custom-file-label" for="directors_name">Full Name</label>
                                             <input type="text" class="form-control" id="directors_name" name="directors_name"
                                                 placeholder="Full Name">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
+                                            <label class="custom-file-label" for="directors_nationality">Nationality</label>
                                             <input type="text" class="form-control" id="directors_nationality" name="directors_nationality"
                                                 placeholder="Nationality"> </div>
                                     </div>
@@ -355,7 +377,7 @@
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>
-                        <h2 class="fs-title">Documents To Attach</h2>
+                        <h2 class="fs-title">Attachments</h2>
                         
                         <div class="form-row">
                             <div class="form-group custom-file col-md-12">
@@ -373,6 +395,12 @@
                             <div class="form-group custom-file col-md-12">
                                 <label class="custom-file-label" for="nssf">NSSF clearance certificate</label>
                                 <input type="file" class="custom-file-input" id="nssf" name="nssf">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group custom-file col-md-12">
+                                <label class="custom-file-label" for="logo">Company Logo</label>
+                                <input type="file" class="custom-file-input" id="logo" name="logo">
                             </div>
                         </div>
                         <input type="button" name="previous" class="previous action-button" value="Previous" />

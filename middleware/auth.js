@@ -9,7 +9,10 @@ module.exports = function (req, res, next) {
   // if (!token) return res.status(401).send('Access denied. No token provided.');
   const token = req.session.token;
   if (!token) return res.status(401).send(req.body);
-
+  // if (!token) {
+  //   // req.flash('error', 'Session Expired.');
+  //   res.redirect('/');
+  // }
   try {
     const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
     req.user = decoded; 

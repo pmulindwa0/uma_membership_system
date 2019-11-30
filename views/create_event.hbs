@@ -1,0 +1,88 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">{{ title }}</h4> 
+        
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <button class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light" onclick="displayFilter()"><i class="fas fa-plus-circle"></i> Add Event</button>
+    </div>
+</div>
+<div class="row" id="filterDiv">
+    <div class="col-sm-12">
+        <div class="white-box p-l-20 p-r-20">
+            <h3 class="box-title m-b-0">Register Event</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" method="POST" action="/events">
+                        <div class="form-group">
+                            <label class="col-md-12" for="title">Title</span></label>
+                            <div class="col-md-12">
+                                <input type="text" id="title" class="form-control form-control-line" name="title"> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12" for="from">From</label>
+                                    <div class="col-md-12">
+                                        <input type="datetime-local" id="from" class="form-control form-control-line" name="from"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12" for="to">To</label>
+                                    <div class="col-md-12">
+                                        <input type="datetime-local" id="to" class="form-control form-control-line" name="to"> </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-12" for="description">Short Description</label>
+                            <div class="col-md-12">
+                                <textarea id="description" class="form-control form-control-line" rows="5" name="description"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-angle-right"></i> Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-10">Events/Meeting List</h3>
+            
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped m-t-10">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Start date/Time</th>
+                            <th>End date/Time</th>
+                             <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{# each events}}
+                        <tr>
+                            <td>{{title}}</td>
+                            <td>{{formatDate from day="numeric" month="long" year="numeric"}}</td>
+                            <td>{{formatDate to day="numeric" month="long" year="numeric"}}</td>
+                            <td>
+                                <span class="mytooltip tooltip-effect-5">
+                                <span class="tooltip-item">Hover</span> <span class="tooltip-content clearfix">
+                                <span class="tooltip-text"><small>{{description}}</small></span> </span>
+                                </span>
+                            </td>
+                            <td><a href="/events/attendance/{{id}}" class="waves-effect">Attendence <i class="mdi mdi-eye fa-fw"></i></a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+                    

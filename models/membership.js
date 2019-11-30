@@ -14,7 +14,9 @@ const memberSchema = new mongoose.Schema({
     whatsapp_number: {type: String},
     skype: {type: String},
     selling_point: {type: String},
+    nature_of_business: {type: String},
     sector: {type: String},
+    category: {type: String},
     products: {type: [ String ]},
     product_hs_codes: {type: [String]},
     product_brands: {type: [String]},
@@ -43,9 +45,28 @@ const memberSchema = new mongoose.Schema({
     created_on: {type: Date, default: Date.now },
     isActive: {type: Boolean, default: false },
     paid_up: {type: Boolean, default: false },
-    license: { type: String, required: true},
-    ura: {type: String, required: true},
-    nssf: {type: String, required: true}
+    license: { type: String},
+    ura: {type: String},
+    nssf: {type: String},
+    logo: {type: String},
+    y_coordinates: {type: String},
+    x_coordinates: {type: String},
+    payments: {type: [{
+        reciept_number: {type: String},
+        cheque_number: {type: String},
+        paymentDate: {type: Date},
+        amount: {type: String},
+        recordedBy: {type: String}
+    }     
+    ]},
+    concerns: {type: [{
+        concern: {type: String},
+        loggedInBy: {type: String},
+        loggedInOn: {type: Date},
+        solution: {type: String},
+        solutionDate: {type: Date}
+    }     
+    ]}
 })
 
 const Member = mongoose.model('Member', memberSchema);

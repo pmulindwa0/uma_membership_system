@@ -8,7 +8,7 @@
     "start": "node app.js"
   },
   "engines": {
-    "node": "8.11.4"
+    "node": ">=8"
   },
   "author": "peter mulindwa",
   "license": "ISC",
@@ -32,6 +32,7 @@
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.6.12",
-    "multer": "^1.3.1"
+    "multer": "^1.3.1",
+    "nodemailer": "^6.3.1"
   }
 }

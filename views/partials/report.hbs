@@ -47,10 +47,11 @@
     <div class="col-sm-12">
         <div class="white-box">
             <h3 class="box-title">Geographical Representation</h3>
-            <button class="export">Click me</button>
-            {{!-- <a onclick="export(this)" class="export">Export coordinates</a> --}}
+            <a href="/wsaip/coordinates/'{{dataString}}'">Export coordinates</a>
+    
             <div id="map_2" class="gmaps"></div>
         </div>
     </div>
 </div>
 
+ {{!-- <textarea id="txt" class='txtarea'>{{wsaipData}}</textarea> --}}

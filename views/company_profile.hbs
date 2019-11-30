@@ -9,7 +9,7 @@
             <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/uma.jpg">
                 <div class="overlay-box">
                     <div class="user-content">
-                        <a href="{{member.website}}"><h4 class="text-white">Visit Website</h4></a>
+                        <a href={{member.website}} target="_blank"><h4 class="text-white">Visit Website</h4></a>
                         <h5 class="text-white">{{member.website}}</h5> </div>
                 </div>
             </div>
@@ -65,6 +65,9 @@
                     <hr>
                     <h4 class="font-bold m-t-30">Key Selling Point</h4>
                     <p class="m-t-30">{{member.selling_point}}</p>
+                    <hr>
+                    <h4 class="font-bold m-t-30">Products/Services</h4>
+                    <p class="m-t-30">{{member.products}}</p>
                     <hr>
                     <h5><strong>Fax number:</strong> {{member.fax_number}}</h5>
                     <h5><strong>Establishment Date:</strong> {{member.establishment_date}}</h5>
@@ -136,97 +139,288 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="settings">
-                    <form class="form-horizontal form-material">
-                        <div class="form-group">
-                            <label class="col-md-12">Phone No.</label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line" name="phone" value="{{member.telephone_number}}"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="example-email" class="col-md-12">Email</label>
-                            <div class="col-md-12">
-                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="email" id="example-email" value="{{member.email}}"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Website</label>
-                            <div class="col-md-12">
-                                <input type="text" value="{{member.website}}" class="form-control form-control-line" name="web"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Fax No</label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line" value="{{member.fax_number}}"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Paid Up</label>
-                            <div class="col-md-12">
-                                <label class="radio-inline">
-                                    <input type="radio" name="paid" id="paid_yes" value="Yes" {{ternary member.paid_up "checked" ""}}> Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="paid" id="paid_no" value="No" {{ternary member.paid_up "" "checked"}}> No
-                                </label>
+                    <form class="form-horizontal form-material" method="POST" action="/membership/{{member._id}}">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Company Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-line" name="company" value="{{member.company_name}}"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Physical Address</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-line" name="office" value="{{member.physical_address}}"> </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Active</label>
-                            <div class="col-md-12">
-                                <label class="radio-inline">
-                                    <input type="radio" name="active" id="active_yes" value="Yes" {{ternary member.isActive "checked" ""}}> Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="active" id="active_no" value="No" {{ternary member.isActive "" "checked"}}> No
-                                </label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Phone No.</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line" name="phone" value="{{member.telephone_number}}"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Email</label>
+                                    <div class="col-md-12">
+                                        <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="email" id="example-email" value="{{member.email}}"> </div>
+                                </div>
                             </div>
                         </div>
+                        
+                       <div class="row">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label class="col-md-12">Website</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.website}}" class="form-control form-control-line" name="web"> </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label class="col-md-12">Fax No</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line" name= "fax" value="{{member.fax_number}}"> </div>
+                                </div>
+                           </div>
+                       </div>
+                        
+                        <div class="row">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label class="col-md-12">Box Number</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.box_number}}" class="form-control form-control-line" name="box"> </div>
+                                </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label class="col-md-12">Whatsapp Number</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line" name= "whatsapp" value="{{member.whatsapp_number}}"> </div>
+                                </div>
+                           </div>
+                       </div>
+                        <div class="row">
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Active</label>
+                                    <div class="col-md-12">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="active" id="active_yes" value="true" {{ternary member.isActive "checked" ""}}> Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="active" id="active_no" value="false" {{ternary member.isActive "" "checked"}}> No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-12">Annual Turnover</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="turnover">
+                                            <option value="">Select Option</option>
+                                            <option value="Below 100 million" {{#if_eq member.turn_over "Below 100 million"}}selected{{/if_eq}}>Below 100 million</option>
+                                            <option value="101 - 200 million" {{#if_eq member.turn_over "101 - 200 million"}}selected{{/if_eq}}>101 - 200 million</option>
+                                            <option value="201 - 300 million" {{#if_eq member.turn_over "201 - 300 million"}}selected{{/if_eq}}>201 - 300 million</option>
+                                            <option value="301 - 400 million" {{#if_eq member.turn_over "301 - 400 million"}}selected{{/if_eq}}>301 - 400 million</option>
+                                            <option value="401 - 500 million" {{#if_eq member.turn_over "401 - 500 million"}}selected{{/if_eq}}>401 - 500 million</option>
+                                            <option value="Above 501 million" {{#if_eq member.turn_over "Above 501 million"}}selected{{/if_eq}}>501 million and above</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-12">Labour Force</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="employees">
+                                            <option value="">Select Option</option>
+                                            <option value="Below 100 employees" {{#if_eq member.labour_force "Below 100 employees"}}selected{{/if_eq}}>Below 100 employees</option>
+                                            <option value="101 - 200 employees" {{#if_eq member.labour_force "101 - 200 employees"}}selected{{/if_eq}}>101 - 200 employees</option>
+                                            <option value="201 - 300 employees" {{#if_eq member.labour_force "201 - 300 employees"}}selected{{/if_eq}}>201 - 300 employees</option>
+                                            <option value="301 - 400 employees" {{#if_eq member.labour_force "301 - 400 employees"}}selected{{/if_eq}}>301 - 400 employees</option>
+                                            <option value="401 - 500 employees" {{#if_eq member.labour_force "401 - 500 employees"}}selected{{/if_eq}}>401 - 500 employees</option>
+                                            <option value="Above 501 employees" {{#if_eq member.labour_force "Above 501 employees"}}selected{{/if_eq}}>501 employees and above</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-sm-12">Capital Investment: (Plant & Machinery)</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="investment">
+                                            <option value="">Select Option</option>
+                                            <option value="Below 100 million" {{#if_eq member.investment "Below 100 million"}}selected{{/if_eq}}>Below 100 million</option>
+                                            <option value="101 - 200 million" {{#if_eq member.investment "101 - 200 million"}}selected{{/if_eq}}>101 - 200 million</option>
+                                            <option value="201 - 300 million" {{#if_eq member.investment "201 - 300 million"}}selected{{/if_eq}}>201 - 300 million</option>
+                                            <option value="301 - 400 million" {{#if_eq member.investment "301 - 400 million"}}selected{{/if_eq}}>301 - 400 million</option>
+                                            <option value="401 - 500 million" {{#if_eq member.investment "401 - 500 million"}}selected{{/if_eq}}>401 - 500 million</option>
+                                            <option value="Above 501 million" {{#if_eq member.investment "Above 501 million"}}selected{{/if_eq}}>501 million and above</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label class="col-sm-12">Category</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control form-control-line" name="category">
+                                        <option value="">Select Option</option>
+                                        <option value="Small" {{#if_eq member.category "Small"}}selected{{/if_eq}}>Small</option>
+                                        <option value="Medium II" {{#if_eq member.category "Medium II"}}selected{{/if_eq}}>Medium II</option>
+                                        <option value="Medium I" {{#if_eq member.category "Medium I"}}selected{{/if_eq}}>Medium I</option>
+                                        <option value="Large" {{#if_eq member.category "Large"}}selected{{/if_eq}}>Large</option>
+                                        <option value="Corporate" {{#if_eq member.category "Corporate"}}selected{{/if_eq}}>Corporate</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label class="col-sm-12">Sector</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control select2" name="sector">
+                                        <option value="">Select Company Sector Option   </option>
+                                        <option value="AGRICULTURAL PRODUCE, EQUIPMENT & DEVELOPMENT" {{#if_eq member.sector "AGRICULTURAL PRODUCE, EQUIPMENT & DEVELOPMENT"}}selected{{/if_eq}}>AGRICULTURAL PRODUCE, EQUIPMENT & DEVELOPMENT</option>
+                                        <option value="ALCOHOL, WINES & SPIRITS" {{#if_eq member.sector "ALCOHOL, WINES & SPIRITS"}}selected{{/if_eq}}>ALCOHOL, WINES & SPIRITS</option>
+                                        <option value="ANIMAL FEEDS, ANIMAL HUSBANDRY & POULTRY" {{#if_eq member.sector "ANIMAL FEEDS, ANIMAL HUSBANDRY & POULTRY"}}selected{{/if_eq}}>ANIMAL FEEDS, ANIMAL HUSBANDRY & POULTRY</option>
+                                        <option value="AUDIT, BANKING, INSURANCE & FINANCIAL SERVICES" {{#if_eq member.sector "AUDIT, BANKING, INSURANCE & FINANCIAL SERVICES"}}selected{{/if_eq}}>AUDIT, BANKING, INSURANCE & FINANCIAL SERVICES/option>
+                                        <option value="AUTOMOBILE & ACCESSORIES" {{#if_eq member.sector "AUTOMOBILE & ACCESSORIES"}}selected{{/if_eq}}>AUTOMOBILE & ACCESSORIES</option>
+                                        <option value="CHEMICALS, PAINTS, RUBBER & FOAM PRODUCTS" {{#if_eq member.sector "CHEMICALS, PAINTS, RUBBER & FOAM PRODUCTS"}}selected{{/if_eq}}>CHEMICALS, PAINTS, RUBBER & FOAM PRODUCTS</option>
+                                        <option value="CONSTRUCTION MATERIALS & SERVICES" {{#if_eq member.sector "CONSTRUCTION MATERIALS & SERVICES"}}selected{{/if_eq}}>CONSTRUCTION MATERIALS & SERVICES</option>
+                                        <option value="CONSULTANCY SERVICES" {{#if_eq member.sector "CONSULTANCY SERVICES"}}selected{{/if_eq}}>CONSULTANCY SERVICES</option>
+                                        <option value="COSMETICS & PERSONAL CARE PRODUCTS" {{#if_eq member.sector "COSMETICS & PERSONAL CARE PRODUCTS"}}selected{{/if_eq}}>COSMETICS & PERSONAL CARE PRODUCTS</option>
+                                        <option value="ELECTRICALS, ELECTRONICS & ENERGY PRODUCTS" {{#if_eq member.sector "ELECTRICALS, ELECTRONICS & ENERGY PRODUCTS"}}selected{{/if_eq}}>ELECTRICALS, ELECTRONICS & ENERGY PRODUCTS</option>
+                                        <option value="ENGINEERING SERVICES, ARCHITECTS & SURVEYORS" {{#if_eq member.sector "ENGINEERING SERVICES, ARCHITECTS & SURVEYORS"}}selected{{/if_eq}}>ENGINEERING SERVICES, ARCHITECTS & SURVEYORS</option>
+                                        <option value="FISH PROCESSING, FISHING GEAR & RELATED PRODUCTS" {{#if_eq member.sector "FISH PROCESSING, FISHING GEAR & RELATED PRODUCTS"}}selected{{/if_eq}}>FISH PROCESSING, FISHING GEAR & RELATED PRODUCTS</option>
+                                        <option value="FOODS & BEVERAGES" {{#if_eq member.sector "FOODS & BEVERAGES"}}selected{{/if_eq}}>FOODS & BEVERAGES</option>
+                                        <option value="HEALTH EQUIPMENT & SERVICES / PHARMACEUTICALS" {{#if_eq member.sector "HEALTH EQUIPMENT & SERVICES / PHARMACEUTICALS"}}selected{{/if_eq}}>HEALTH EQUIPMENT & SERVICES / PHARMACEUTICALS</option>
+                                        <option value="HORTICULTURE & TEA" {{#if_eq member.sector "HORTICULTURE & TEA"}}selected{{/if_eq}}>HORTICULTURE & TEA</option>
+                                        <option value="HOTEL, HOSPITALITY & CONFERENCE FACILITIES" {{#if_eq member.sector "HOTEL, HOSPITALITY & CONFERENCE FACILITIES"}}selected{{/if_eq}}>HOTEL, HOSPITALITY & CONFERENCE FACILITIES</option>
+                                        <option value="INDUSTRIAL & MEDICAL GASES" {{#if_eq member.sector "INDUSTRIAL & MEDICAL GASES"}}selected{{/if_eq}}>INDUSTRIAL & MEDICAL GASES</option>
+                                        <option value="INDUSTRIAL TOOLS, EQUIPMENT & MACHINERY" {{#if_eq member.sector "INDUSTRIAL TOOLS, EQUIPMENT & MACHINERY"}}selected{{/if_eq}}>INDUSTRIAL TOOLS, EQUIPMENT & MACHINERY</option>
+                                        <option value="INFORMATION TECHNOLOGY SERVICES & EQUIPMENT" {{#if_eq member.sector "INFORMATION TECHNOLOGY SERVICES & EQUIPMENT"}}selected{{/if_eq}}>INFORMATION TECHNOLOGY SERVICES & EQUIPMENT</option>
+                                        <option value="LAUNDRY SERVICES, DETERGENTS  & DRY CLEANERS" {{#if_eq member.sector "LAUNDRY SERVICES, DETERGENTS  & DRY CLEANERS"}}selected{{/if_eq}}>LAUNDRY SERVICES, DETERGENTS  & DRY CLEANERS</option>
+                                        <option value="LIGHTING PRODUCTS" {{#if_eq member.sector "LIGHTING PRODUCTS"}}selected{{/if_eq}}>LIGHTING PRODUCTS</option>
+                                        <option value="METAL, STEEL & ALUMINIUM PRODUCTS" {{#if_eq member.sector "METAL, STEEL & ALUMINIUM PRODUCTS"}}selected{{/if_eq}}>METAL, STEEL & ALUMINIUM PRODUCTS</option>
+                                        <option value="MILK & MILK PRODUCTS" {{#if_eq member.sector "MILK & MILK PRODUCTS"}}selected{{/if_eq}}>MILK & MILK PRODUCTS</option>
+                                        <option value="MINING & MINERAL PROCESSING" {{#if_eq member.sector "MINING & MINERAL PROCESSING"}}selected{{/if_eq}}>MINING & MINERAL PROCESSING</option>
+                                        <option value="MULTISECTORAL" {{#if_eq member.sector "MULTISECTORAL"}}selected{{/if_eq}}>MULTISECTORAL</option>
+                                        <option value="OIL & PETROLEUM PRODUCTS" {{#if_eq member.sector "OIL & PETROLEUM PRODUCTS"}}selected{{/if_eq}}>OIL & PETROLEUM PRODUCTS</option>
+                                        <option value="PACKAGING MATERIALS & LABELS" {{#if_eq member.sector "PACKAGING MATERIALS & LABELS"}}selected{{/if_eq}}>PACKAGING MATERIALS & LABELS</option>
+                                        <option value="PLASTICS" {{#if_eq member.sector "PLASTICS"}}selected{{/if_eq}}>PLASTICS</option>
+                                        <option value="REAL ESTATE" {{#if_eq member.sector "REAL ESTATE"}}selected{{/if_eq}}>REAL ESTATE</option>
+                                        <option value="SECURITY SERVICES" {{#if_eq member.sector "SECURITY SERVICES"}}selected{{/if_eq}}>SECURITY SERVICES</option>
+                                        <option value="STATIONERY, DESIGNING, PUBLISHING & PRINTING" {{#if_eq member.sector "STATIONERY, DESIGNING, PUBLISHING & PRINTING"}}selected{{/if_eq}}>STATIONERY, DESIGNING, PUBLISHING & PRINTING</option>
+                                        <option value="TANNERY, LEATHER & LEATHER PRODUCTS" {{#if_eq member.sector "TANNERY, LEATHER & LEATHER PRODUCTS"}}selected{{/if_eq}}>TANNERY, LEATHER & LEATHER PRODUCTS</option>
+                                        <option value="TELECOMMUNICATIONS" {{#if_eq member.sector "TELECOMMUNICATIONS"}}selected{{/if_eq}}>TELECOMMUNICATIONS</option>
+                                        <option value="TEXTILES & GARMENTS" {{#if_eq member.sector "TEXTILES & GARMENTS"}}selected{{/if_eq}}>TEXTILES & GARMENTS</option>
+                                        <option value="TRADING" {{#if_eq member.sector "TRADING"}}selected{{/if_eq}}>TRADING</option>
+                                        <option value="TRANSPORTERS, CLEARING & FORWARDING AGENTS" {{#if_eq member.sector "TRANSPORTERS, CLEARING & FORWARDING AGENTS"}}selected{{/if_eq}}>TRANSPORTERS, CLEARING & FORWARDING AGENTS</option>
+                                        <option value="UTILITIES" {{#if_eq member.sector "UTILITIES"}}selected{{/if_eq}}>UTILITIES</option>
+                                        <option value="VEGETABLE OIL & OIL PRODUCTS" {{#if_eq member.sector "VEGETABLE OIL & OIL PRODUCTS"}}selected{{/if_eq}}>VEGETABLE OIL & OIL PRODUCTS</option>
+                                        <option value="WOOD, FURNITURE & WOOD PRODUCTS" {{#if_eq member.sector "WOOD, FURNITURE & WOOD PRODUCTS"}}selected{{/if_eq}}>WOOD, FURNITURE & WOOD PRODUCTS</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Facebook Account</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.facebook_account}}" class="form-control form-control-line" name="facebook"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Tweeter Handle</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.tweeter_handle}}" class="form-control form-control-line" name="tweeter"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Skype</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.skype}}" class="form-control form-control-line" name="skype"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Contact Person</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.contact_name}}" class="form-control form-control-line" name="contact_person"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Contact Person Tel</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.contact_tel}}" class="form-control form-control-line" name="contact_tel"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Contact Person Email</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.contact_email}}" class="form-control form-control-line" name="contact_email"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Map Y Co-ordinates</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.y_coordinates}}" class="form-control form-control-line" name="y_coordinates" placeholder="Eg; 0.3140376"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-12">Map X Co-ordinates</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="{{member.x_coordinates}}" class="form-control form-control-line" name="x_coordinates" placeholder="Eg; 32.6147324"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{#unless member.logo}}
                         <div class="form-group">
-                            <label class="col-sm-12">Labour Force</label>
+                            <label class="col-sm-12">Upload Logo</label>
                             <div class="col-sm-12">
-                                <select class="form-control form-control-line" name="employees">
-                                    <option value="">Select Option</option>
-                                    <option value="Below 100 employees" {{#if_eq member.labour_force "Below 100 employees"}}selected{{/if_eq}}>Below 100 employees</option>
-                                    <option value="101 - 200 employees" {{#if_eq member.labour_force "101 - 200 employees"}}selected{{/if_eq}}>101 - 200 employees</option>
-                                    <option value="201 - 300 employees" {{#if_eq member.labour_force "201 - 300 employees"}}selected{{/if_eq}}>201 - 300 employees</option>
-                                    <option value="301 - 400 employees" {{#if_eq member.labour_force "301 - 400 employees"}}selected{{/if_eq}}>301 - 400 employees</option>
-                                    <option value="401 - 500 employees" {{#if_eq member.labour_force "401 - 500 employees"}}selected{{/if_eq}}>401 - 500 employees</option>
-                                    <option value="Above 501 employees" {{#if_eq member.labour_force "Above 501 employees"}}selected{{/if_eq}}>501 employees and above</option>
-                                </select>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control form-control-line" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                    <input type="file" name="logo"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-12">Annual Turnover</label>
-                            <div class="col-sm-12">
-                                <select class="form-control form-control-line" name="turnover">
-                                    <option value="">Select Option</option>
-                                    <option value="Below 100 million" {{#if_eq member.turn_over "Below 100 million"}}selected{{/if_eq}}>Below 100 million</option>
-                                    <option value="101 - 200 million" {{#if_eq member.turn_over "101 - 200 million"}}selected{{/if_eq}}>101 - 200 million</option>
-                                    <option value="201 - 300 million" {{#if_eq member.turn_over "201 - 300 million"}}selected{{/if_eq}}>201 - 300 million</option>
-                                    <option value="301 - 400 million" {{#if_eq member.turn_over "301 - 400 million"}}selected{{/if_eq}}>301 - 400 million</option>
-                                    <option value="401 - 500 million" {{#if_eq member.turn_over "401 - 500 million"}}selected{{/if_eq}}>401 - 500 million</option>
-                                    <option value="Above 501 million" {{#if_eq member.turn_over "Above 501 million"}}selected{{/if_eq}}>501 million and above</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Facebook Account</label>
-                            <div class="col-md-12">
-                                <input type="text" value="{{member.facebook_account}}" class="form-control form-control-line" name="facebook"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Tweeter Handle</label>
-                            <div class="col-md-12">
-                                <input type="text" value="{{member.tweeter_handle}}" class="form-control form-control-line" name="tweeter"> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12">Skype</label>
-                            <div class="col-md-12">
-                                <input type="text" value="{{member.skype}}" class="form-control form-control-line" name="skype"> </div>
-                        </div>
+                        {{/unless}}
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <button class="btn btn-success">Update Profile</button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
